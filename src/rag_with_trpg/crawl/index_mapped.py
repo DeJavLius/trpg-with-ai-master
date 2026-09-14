@@ -8,7 +8,7 @@ from bs4.element import AttributeValueList
 
 from rag_with_trpg.crawl.config import CrawlConfig
 from rag_with_trpg.crawl.util import md_head_counter, title_decision
-from rag_with_trpg.util import find_file, serialize
+from rag_with_trpg.util import find_file, save_file, serialize
 
 """
 title: claude 작성 python script — 시그니처 전용
@@ -86,9 +86,10 @@ def mapper(
 
 
 def save_index(config: CrawlConfig, page_entries: list[PageEntry]) -> None:
-    config.index_file.write_text(
+    save_file(
+        config.index_file.stem,
+        config.index_file,
         json.dumps([asdict(e) for e in page_entries], ensure_ascii=False, indent=2),
-        encoding="utf-8",
     )
 
 

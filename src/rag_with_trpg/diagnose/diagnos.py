@@ -8,7 +8,7 @@ from transformers import AutoTokenizer, SentencePieceBackend, TokenizersBackend
 from rag_with_trpg.crawl.convert import extract
 from rag_with_trpg.crawl.index_mapped import PageEntry
 from rag_with_trpg.diagnose.config import DiagnoseConfig
-from rag_with_trpg.util import header_counting, load_json
+from rag_with_trpg.util import header_counting, load_json, save_file
 
 
 @dataclass(kw_only=True)
@@ -44,6 +44,7 @@ class DiagnoseResult:
 
 
 def diagnose(config: DiagnoseConfig):
+    # local_only 를 안 넘기면 「로컬만 쓴다」가 조용히 무시되고 매번 허브 리비전을 확인한다.
     tokenizer: TokenizersBackend | SentencePieceBackend = AutoTokenizer.from_pretrained(
         config.embed_test_model, local_files_only=config.model_local_only
     )
@@ -52,11 +53,22 @@ def diagnose(config: DiagnoseConfig):
     index_pages = load_json(PageEntry, config, "index_file")
     extract_pages = list(filter(lambda x: x.excluded is None, index_pages))
 
+    # 재기 전에 입력을 검사한다 — D-35 6항목의 5번 (D-34 「가드」).
+    # meta_analyze 가 md 를 전부 읽으므로, 뒤에 두면 여기 도달하기 전에
+    # FileNotFoundError 로 죽어 「어느 것이 몇 건 없는지」를 못 본다.
+    missing = missing_md_files(config.base_path, extract_pages)
+    if missing:
+        raise RuntimeError(
+            f"인덱스가 가리키는 markdown {len(missing)}건이 없습니다: {', '.join(missing)}. "
+            f"크롤을 다시 돌리거나 인덱스를 재생성하세요."
+        )
+
     print("[2] diagnose: start round-trip check")
     meta_list = meta_analyze(config, tokenizer, extract_pages)
-    config.meta_file.write_text(
+    save_file(
+        config.meta_file.stem,
+        config.meta_file,
         json.dumps([asdict(e) for e in meta_list], ensure_ascii=False, indent=2),
-        encoding="utf-8",
     )
 
     print("[3] diagnose: start analys meta result")
@@ -74,9 +86,10 @@ def diagnose(config: DiagnoseConfig):
             ms.title for ms in sorted(meta_list, key=lambda m: m.chars_per_token)
         ],
     )
-    config.meta_result_file.write_text(
+    save_file(
+        config.meta_result_file.stem,
+        config.meta_result_file,
         json.dumps(asdict(result), ensure_ascii=False, indent=2),
-        encoding="utf-8",
     )
 
     print("[4] diagnose: final result")
@@ -84,7 +97,7 @@ def diagnose(config: DiagnoseConfig):
     print(
         f"[정보 출력]: 엔트리 {len(index_pages)}건, excluded {len(index_pages) - len(extract_pages)}건\n"
         + f"markdown {len(extract_pages)}건, slug 고유 여부: {slug_check(index_pages)} \n"
-        + f"markdown 파일 실존 여부: {md_file_exists(config.base_path, extract_pages)} \n"
+        + f"markdown 누락: {len(missing)}건 \n"
         + f"제외 건 markdown 상세: \n{print_index_md(index_md_result)} \n"
     )
     result.print_result()
@@ -97,12 +110,20 @@ def slug_check(index_pages: list[PageEntry]) -> int:
     return len(index_pages) == len(result_set)
 
 
-def md_file_exists(base_path: str, extract_pages: list[PageEntry]) -> bool:
-    exist = True
-    for page in extract_pages:
-        md_file = Path(base_path + page.md)
-        exist = md_file.exists()
-    return exist
+def missing_md_files(base_path: str, extract_pages: list[PageEntry]) -> list[str]:
+    """인덱스가 가리키는 md 중 실제로 없는 것들 — D-35 6항목의 5번.
+
+    bool 이 아니라 목록을 돌려준다. 「하나라도 없다」만 알면 38건 중 어느 것인지
+    다시 뒤져야 하고, 그 추적 비용 때문에 결국 아무도 안 보게 된다.
+
+    page.md 가 None 인 엔트리(제외 건)는 여기 오면 안 된다 — 호출부가 거르지만
+    가정을 함수 밖에 두면 호출부가 하나 늘 때 조용히 TypeError 가 된다.
+    """
+    return [
+        page.md
+        for page in extract_pages
+        if page.md is None or not Path(base_path + page.md).is_file()
+    ]
 
 
 def index_file_diagnose(

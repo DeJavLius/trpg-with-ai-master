@@ -97,7 +97,7 @@ def fixed_chunking(
     index, start, stride, end = 0, 0, size - overlap, size
     last_chunk = False
     chunk_result: list[Chunk] = []
-    while start < len(text):
+    while start < len(text) and not last_chunk:
         end = min(end, len(text))
         if start + size >= len(text):
             start = max(0, end - size)
@@ -115,8 +115,6 @@ def fixed_chunking(
                 chars_nonspace=len("".join(chunk.split())),
             )
         )
-        if last_chunk:
-            break
 
         index += 1
         start += stride

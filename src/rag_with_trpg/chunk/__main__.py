@@ -1,4 +1,3 @@
-from rag_with_trpg.chunk.config import ChunkConfig
 from rag_with_trpg.chunk.fixed import fixed_chunking
 from rag_with_trpg.config import load_config
 

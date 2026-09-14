@@ -1,11 +1,14 @@
-from dataclasses import FrozenInstanceError
-from pathlib import Path
+from dataclasses import FrozenInstanceError, fields
 
 import pytest
 
+import rag_with_trpg.config as config_module
+from rag_with_trpg.chunk.config import ChunkConfig
 from rag_with_trpg.config import (
     ROOT,
     Config,
+    get_env,
+    get_int_env,
     load_config,
     require_bool_env,
     require_env,
@@ -19,64 +22,32 @@ from rag_with_trpg.diagnose.config import DiagnoseConfig
 title: claude 작성 python script — 테스트 본문
 content: D-20 조건부 (2026-09-04 개정). 「무엇을 잠그나」와 기대값은 직접 정하고,
          pytest 문법·monkeypatch 배선은 AI 가 적었다.
-         config.py 소관 — 설정이 조용히 빈 값으로 통과하지 않는지 (D-21 4번의 설정판).
+
+         ♻️ 09-09 전면 개정 — 필드를 열거하지 않는다.
+         종전 판은 설정 클래스마다 필드 값을 하나하나 assert 했다. 그러면 환경변수가
+         하나 늘 때마다 테스트를 같이 고쳐야 하는데, 그 수정은 「구현을 그대로 옮겨 적는」
+         작업이라 회귀를 못 잡는다 (실제로 chunk_result_file 추가 때 테스트만 깨졌다).
+
+         대신 두 가지를 잠근다.
+           ① 헬퍼의 규칙 — 빈 값·경로 이탈·"1" 만 참. 필드 목록과 무관하다
+           ② 조립 구조 — 선언된 필드가 전부 채워지는가, 키가 필드와 맞는가.
+              dataclasses.fields() 로 순회하므로 필드가 늘어도 테스트는 그대로다
 """
 
+# from_config() 을 가진 설정 클래스 전부. 새 패키지가 생기면 여기 한 줄만 는다.
+CONFIG_CLASSES = [Config, CrawlConfig, DiagnoseConfig, ChunkConfig]
 CORPORA = ROOT / "corpora" / "dungeonworld"
 
-ENV = {
-    "DW_SITE": "https://sites.google.com/",
-    "URL_KEYWORD": "/view/dwtemporary/",
-    "USER_AGENT": "rag-with-trpg-test",
-    "CORPORA_DUNGEONWORLD_PATH": "corpora/dungeonworld/",
-    "INDEX_FILE": "index",
-    "META_FILE": "meta",
-    "META_RESULT_FILE": "diagnose",
-    "EMBED_TEST_MODEL": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-    "EMBED_TEST_MAX_SEQ": "128",
-    "MODEL_LOCAL_ONLY": "1",
-    "DO_CRAWL": "0",
-    "DO_CREATE": "0",
-    "DO_DIAGNOSE": "0",
-    "DO_MODEL_COMPARE": "0",
-}
 
-
-@pytest.fixture
-def env(monkeypatch):
-    """.env 를 읽지 않고 환경변수만 세운다 — 로컬 .env 값에 테스트가 흔들리지 않게."""
-    for key, value in ENV.items():
-        monkeypatch.setenv(key, value)
-    return monkeypatch
-
-
-@pytest.fixture
-def env_root(tmp_path: Path, monkeypatch):
-    """load_config 이 읽는 ROOT 를 임시 디렉터리로 돌리고, .env 파일을 써 주는 팩토리.
-
-    3ffe047 에서 .env.shared 가 override=True 로 바뀌어, monkeypatch 로 세운
-    환경변수는 .env.shared 에 있는 키를 더 이상 덮지 못한다. 우선순위를 잠그려면
-    환경변수가 아니라 파일 쪽에서 재현해야 한다.
-
-    실제 .env / .env.shared / .env.execute 를 읽지 않으므로 로컬 설정 상태에
-    결과가 흔들리지 않는다. 안 쓴 파일은 없는 파일이고, load_dotenv 는 무해하게 지난다.
-    """
-    monkeypatch.setattr("rag_with_trpg.config.ROOT", tmp_path)
-
-    def _write(name: str, **values: str) -> Path:
-        path = tmp_path / name
-        path.write_text(
-            "".join(f"{key}={value}\n" for key, value in values.items()),
-            encoding="utf-8",
-        )
-        return path
-
-    return _write
+def _ids(cls) -> str:
+    return cls.__name__
 
 
 # ─── require_env — 빈 값이 조용히 통과하지 않는다 ─────────────────────
-def test_require_env_returns_value(env):
-    assert require_env("INDEX_FILE") == "index"
+def test_require_env_returns_value(monkeypatch):
+    monkeypatch.setenv("SOME_KEY", "value")
+
+    assert require_env("SOME_KEY") == "value"
 
 
 def test_require_env_raises_when_unset(monkeypatch):
@@ -105,51 +76,51 @@ def test_require_env_strips_surrounding_space(monkeypatch):
     assert require_env("PADDED") == "index"
 
 
-# ─── require_path — 프로젝트 밖을 가리키지 않는다 ──────────────────────
-def test_require_path_resolves_under_root(env):
-    path = require_path("CORPORA_DUNGEONWORLD_PATH", "raw")
+def test_require_env_names_the_variable(monkeypatch):
+    """어느 환경변수인지 메시지에 있어야 한다. 없으면 원인을 못 찾는다."""
+    monkeypatch.delenv("MISSING_KEY", raising=False)
 
-    assert path == ROOT / "corpora" / "dungeonworld" / "raw"
-
-
-def test_require_path_rejects_escape(monkeypatch):
-    """`../` 로 저장소 밖을 가리키면 거부한다.
-
-    clear_dir 가 이 경로를 통째로 비우므로, 밖을 가리키면 남의 디렉터리를 지운다.
-    """
-    monkeypatch.setenv("ESCAPE_PATH", "../../..")
-
-    with pytest.raises(RuntimeError):
-        require_path("ESCAPE_PATH")
+    with pytest.raises(RuntimeError, match="MISSING_KEY"):
+        require_env("MISSING_KEY")
 
 
-def test_require_path_rejects_absolute_outside_root(monkeypatch):
-    monkeypatch.setenv("ABS_PATH", "/tmp")
-
-    with pytest.raises(RuntimeError):
-        require_path("ABS_PATH")
-
-
-# ─── require_json_env — 파일명이 .json 경로 하나로 확정된다 ─────────────
-def test_require_json_env_appends_suffix(env):
-    """`.json` 은 확장자다. 경로 한 칸(`index/.json`)이 되면 파일이 안 열린다.
-
-    joinpath(".json") 은 디렉터리를 하나 더 만든다 — 파일이 없다는 에러가
-    한참 뒤 read_text 에서 나므로 원인이 설정이라는 걸 알기 어렵다.
-    """
-    path = require_json_env("INDEX_FILE")
-
-    assert path == CORPORA / "index.json"
-    assert path.suffix == ".json"
-    assert path.parent == CORPORA
+# ─── get_env / get_int_env — 미설정이 허용되는 쪽 ──────────────────────
+#
+# require_* 는 멈추고 get_* 는 None 을 낸다. 「없어도 되는 값」과 「없으면 안 되는 값」을
+# 호출부가 고르는 구조이므로, 두 갈래가 실제로 다르게 도는지 잠근다.
 
 
-def test_require_json_env_rejects_escape(monkeypatch, env):
-    """파일명으로도 코퍼스 밖을 못 가리킨다 — require_path 의 검사를 그대로 탄다."""
-    monkeypatch.setenv("INDEX_FILE", "../../../../etc/passwd")
+@pytest.mark.parametrize("value", ["", "   ", "\t\n"])
+def test_get_env_returns_none_on_blank(monkeypatch, value: str):
+    monkeypatch.setenv("OPTIONAL_KEY", value)
 
-    with pytest.raises(RuntimeError):
-        require_json_env("INDEX_FILE")
+    assert get_env("OPTIONAL_KEY") is None
+
+
+def test_get_env_returns_none_when_unset(monkeypatch):
+    monkeypatch.delenv("OPTIONAL_KEY", raising=False)
+
+    assert get_env("OPTIONAL_KEY") is None
+
+
+def test_get_int_env_parses(monkeypatch):
+    monkeypatch.setenv("SOME_INT", " 128 ")
+
+    assert get_int_env("SOME_INT") == 128
+
+
+def test_get_int_env_returns_none_when_unset(monkeypatch):
+    monkeypatch.delenv("SOME_INT", raising=False)
+
+    assert get_int_env("SOME_INT") is None
+
+
+def test_get_int_env_raises_on_non_numeric(monkeypatch):
+    """숫자가 아니면 None 으로 삼키지 않는다 — 오타가 「미설정」으로 위장하면 안 된다."""
+    monkeypatch.setenv("SOME_INT", "백이십팔")
+
+    with pytest.raises(ValueError):
+        get_int_env("SOME_INT")
 
 
 # ─── require_bool_env — "1" 만 참이다 ──────────────────────────────
@@ -172,127 +143,162 @@ def test_require_bool_env_rejects_blank(monkeypatch):
         require_bool_env("FLAG")
 
 
-# ─── Config — JSON 3종이 서로 다른 파일이어야 한다 ─────────────────────
-def test_config_json_files_are_distinct(env):
-    """셋이 같은 파일을 가리키면 뒤 단계가 앞 단계 산출물을 덮어쓴다.
+# ─── require_path — 프로젝트 밖을 가리키지 않는다 ──────────────────────
+def test_require_path_resolves_under_root(monkeypatch):
+    monkeypatch.setenv("CORPORA_DUNGEONWORLD_PATH", "corpora/dungeonworld/")
 
-    load_config() 는 환경변수 「값」의 중복만 본다. 이름이 달라도 from_config 가
-    같은 변수를 두 번 읽으면 그 검사를 그냥 지나간다 — 그래서 여기서 한 번 더 본다.
+    assert require_path("CORPORA_DUNGEONWORLD_PATH", "raw") == CORPORA / "raw"
+
+
+def test_require_path_rejects_escape(monkeypatch):
+    """`../` 로 저장소 밖을 가리키면 거부한다.
+
+    clear_dir 가 이 경로를 통째로 비우므로, 밖을 가리키면 남의 디렉터리를 지운다.
+    """
+    monkeypatch.setenv("ESCAPE_PATH", "../../..")
+
+    with pytest.raises(RuntimeError):
+        require_path("ESCAPE_PATH")
+
+
+def test_require_path_rejects_absolute_outside_root(monkeypatch):
+    monkeypatch.setenv("ABS_PATH", "/tmp")
+
+    with pytest.raises(RuntimeError):
+        require_path("ABS_PATH")
+
+
+# ─── require_json_env — 파일명이 .json 경로 하나로 확정된다 ─────────────
+def test_require_json_env_appends_suffix(monkeypatch):
+    """`.json` 은 확장자다. 경로 한 칸(`index/.json`)이 되면 파일이 안 열린다.
+
+    joinpath(".json") 은 디렉터리를 하나 더 만든다 — 파일이 없다는 에러가
+    한참 뒤 read_text 에서 나므로 원인이 설정이라는 걸 알기 어렵다.
+    """
+    monkeypatch.setenv("CORPORA_DUNGEONWORLD_PATH", "corpora/dungeonworld/")
+    monkeypatch.setenv("SOME_FILE", "index")
+
+    path = require_json_env("SOME_FILE")
+
+    assert path == CORPORA / "index.json"
+    assert path.parent == CORPORA
+
+
+def test_require_json_env_rejects_escape(monkeypatch):
+    """파일명으로도 코퍼스 밖을 못 가리킨다 — require_path 의 검사를 그대로 탄다."""
+    monkeypatch.setenv("CORPORA_DUNGEONWORLD_PATH", "corpora/dungeonworld/")
+    monkeypatch.setenv("SOME_FILE", "../../../../etc/passwd")
+
+    with pytest.raises(RuntimeError):
+        require_json_env("SOME_FILE")
+
+
+# ─── 조립 구조 — 필드가 늘어도 이 절은 안 바뀐다 ────────────────────────
+@pytest.mark.parametrize("cls", CONFIG_CLASSES, ids=_ids)
+def test_from_config_fills_every_declared_field(cls):
+    """선언된 필드가 전부 채워진다.
+
+    _extra_kwargs 에 키를 빠뜨리거나 오타를 내면 여기서 TypeError 로 죽는다.
+    필드 이름을 적지 않으므로, 환경변수가 늘어도 이 테스트는 그대로다.
+    """
+    config = cls.from_config()
+
+    assert isinstance(config, cls)
+    assert {f.name for f in fields(cls)} == set(vars(config))
+
+
+@pytest.mark.parametrize("cls", CONFIG_CLASSES, ids=_ids)
+def test_extra_kwargs_keys_are_exactly_the_subclass_fields(cls):
+    """_extra_kwargs 의 키 = 서브클래스가 추가한 필드.
+
+    대소문자·오타를 이름 열거 없이 잡는다. 키 하나가 대문자였던 적이 실제로 있다.
+    """
+    added = {f.name for f in fields(cls)} - {f.name for f in fields(Config)}
+
+    assert set(cls._extra_kwargs()) == added
+
+
+@pytest.mark.parametrize("cls", CONFIG_CLASSES, ids=_ids)
+def test_extra_kwargs_does_not_shadow_base_fields(cls):
+    """서브클래스가 공통 필드를 다시 내면 안 된다.
+
+    from_config() 은 cls(**base, **extra) 로 펼치므로 겹치면 TypeError 로 죽는다.
+    죽는 게 맞는 동작이고, 그 전에 여기서 이유를 말해주는 편이 낫다.
+    """
+    assert set(cls._extra_kwargs()).isdisjoint(Config._base_kwargs())
+
+
+@pytest.mark.parametrize("cls", CONFIG_CLASSES, ids=_ids)
+def test_config_is_frozen(cls):
+    """설정은 실행 중에 바뀌지 않는다. 바꾸려면 dataclasses.replace 로 새로 만든다."""
+    config = cls.from_config()
+    name = next(f.name for f in fields(cls))
+
+    with pytest.raises(FrozenInstanceError):
+        setattr(config, name, "other")
+
+
+def test_json_outputs_are_distinct_files():
+    """산출물 경로가 겹치면 뒤 단계가 앞 단계 결과를 덮어쓴다.
+
+    load_config() 는 환경변수 「값」의 중복만 본다. _base_kwargs 가 같은 변수를
+    두 번 읽으면 그 검사를 그냥 지나가므로 확정된 경로 쪽에서 한 번 더 본다.
+    파일 개수를 세지 않고 .json 필드를 전부 모으므로 산출물이 늘어도 따라온다.
     """
     config = Config.from_config()
+    json_paths = [
+        value
+        for f in fields(config)
+        if (value := getattr(config, f.name)) is not None
+        and str(value).endswith(".json")
+    ]
 
-    assert config.index_file == CORPORA / "index.json"
-    assert config.meta_file == CORPORA / "meta.json"
-    assert config.meta_result_file == CORPORA / "diagnose.json"
-    assert len({config.index_file, config.meta_file, config.meta_result_file}) == 3
-
-
-def test_config_paths_are_under_root(env):
-    config = Config.from_config()
-
-    assert config.raw_path == CORPORA / "raw"
-    assert config.md_path == CORPORA / "md"
+    assert len(json_paths) >= 2
+    assert len(set(json_paths)) == len(json_paths)
 
 
 # ─── load_config — 파일명 중복을 멈춘다 ────────────────────────────
-def test_load_config_rejects_duplicate_file_names(env, env_root):
-    """META_FILE 이 INDEX_FILE 과 같으면 인덱스가 계측 결과에 덮인다.
+#
+# load_config() 은 .env.shared 를 override=True 로 읽으므로, 그냥 monkeypatch 하면
+# 파일 값이 되돌려 놓는다. 파일 읽기를 끄고 가드 자체만 태운다.
 
-    중복은 .env.shared 로 만든다. override=True 라서 monkeypatch 로는 못 만든다 —
-    검사 대상이 「파일에 중복이 있으면 멈추나」이므로 파일 쪽이 원래 맞는 자리다.
-    META_RESULT_FILE 은 이 파일에 없으므로 env 픽스처의 "diagnose" 가 남는다.
-    """
-    env_root(".env.shared", INDEX_FILE="index", META_FILE="index")
+
+@pytest.fixture
+def without_dotenv(monkeypatch):
+    monkeypatch.setattr(config_module, "load_dotenv", lambda *a, **k: None)
+    return monkeypatch
+
+
+def test_load_config_rejects_duplicate_file_names(without_dotenv):
+    """META_FILE 이 INDEX_FILE 과 같으면 인덱스가 계측 결과에 덮인다."""
+    without_dotenv.setenv("INDEX_FILE", "same")
+    without_dotenv.setenv("META_FILE", "same")
+    without_dotenv.setenv("META_RESULT_FILE", "diagnose")
 
     with pytest.raises(RuntimeError):
         load_config()
 
 
-def test_load_config_restores_values_from_shared_file(monkeypatch, env, env_root):
-    """지워진 값은 .env.shared 에서 되돌아온다 — 그게 이 함수의 일이다."""
-    env_root(".env.shared", META_RESULT_FILE="diagnose")
-    monkeypatch.delenv("META_RESULT_FILE", raising=False)
+def test_load_config_passes_when_names_differ(without_dotenv):
+    without_dotenv.setenv("INDEX_FILE", "index")
+    without_dotenv.setenv("META_FILE", "meta")
+    without_dotenv.setenv("META_RESULT_FILE", "diagnose")
 
     load_config()
 
-    assert require_env("META_RESULT_FILE") == "diagnose"
+
+def test_load_config_reports_missing_file_name(without_dotenv):
+    """미설정은 AttributeError 가 아니라 RuntimeError 로 나와야 원인이 읽힌다."""
+    without_dotenv.setenv("INDEX_FILE", "index")
+    without_dotenv.setenv("META_FILE", "meta")
+    without_dotenv.delenv("META_RESULT_FILE", raising=False)
+
+    with pytest.raises(RuntimeError, match="META_RESULT_FILE"):
+        load_config()
 
 
-# ─── load_config — .env 3종의 우선순위 ─────────────────────────────
-#
-# .env > .env.shared > 프로세스 환경변수 > .env.execute
-#
-# 3ffe047 에서 .env.shared 가 override=True 가 되며 이 순서가 확정됐다.
-# 순서가 또 바뀌면 여기서 먼저 깨진다 — 09-08 처럼 무관한 테스트가
-# 조용히 통과하지 않게 만드는 것이 이 세 개의 일이다.
-
-
-def test_shared_file_overrides_process_env(monkeypatch, env, env_root):
-    """공용 설정은 이미 세워진 환경변수를 덮는다 (override=True).
-
-    셸에 남은 옛 값이 살아남으면 엉뚱한 파일을 가리키면서 에러도 안 난다.
-    """
-    monkeypatch.setenv("META_FILE", "stale")
-    env_root(".env.shared", META_FILE="meta")
-
-    load_config()
-
-    assert require_env("META_FILE") == "meta"
-
-
-def test_execute_file_yields_to_process_env(monkeypatch, env, env_root):
-    """실행 파라미터는 환경변수가 이긴다 (override=False).
-
-    `CHUNK_SIZE=900 uv run ...` 로 한 번만 바꿔 돌리는 실험이 가능해야 한다.
-    .env.execute 가 덮어버리면 그 실험이 안 된다.
-    """
-    monkeypatch.setenv("CHUNK_SIZE", "900")
-    env_root(".env.execute", CHUNK_SIZE="600")
-
-    load_config()
-
-    assert require_env("CHUNK_SIZE") == "900"
-
-
-def test_local_env_overrides_shared_file(env, env_root):
-    """로컬 .env 가 최우선이다 — 비밀값·개인 설정이 공용 설정을 덮는다."""
-    env_root(".env.shared", USER_AGENT="shared-agent")
-    env_root(".env", USER_AGENT="local-agent")
-
-    load_config()
-
-    assert require_env("USER_AGENT") == "local-agent"
-
-
-# ─── from_config — 필드 누락을 잡는다 ──────────────────────────────
-def test_crawl_config_reads_every_field(env):
-    """필드가 늘 때 .env 갱신을 잊으면 여기서 먼저 깨진다."""
-    config = CrawlConfig.from_config()
-
-    assert config.site_url == "https://sites.google.com"
-    assert config.url_keyword == "/view/dwtemporary/"
-    assert config.user_agent == "rag-with-trpg-test"
-    assert config.index_file == CORPORA / "index.json"
-    assert config.raw_path == CORPORA / "raw"
-    assert config.md_path == CORPORA / "md"
-    assert config.do_crawl is False
-    assert config.do_create is False
-
-
-def test_diagnose_config_reads_every_field(env):
-    """DiagnoseConfig 도 같은 기반을 쓴다 — 기반이 바뀌면 둘 다 여기서 깨진다."""
-    config = DiagnoseConfig.from_config()
-
-    assert config.embed_test_model.endswith("paraphrase-multilingual-MiniLM-L12-v2")
-    assert config.embed_test_max_seq == 128
-    assert config.model_local_only is True
-    assert config.meta_file == CORPORA / "meta.json"
-    assert config.meta_result_file == CORPORA / "diagnose.json"
-    assert config.do_diagnose is False
-    assert config.do_model_compare is False
-
-
-def test_from_config_strips_trailing_slash_on_site_url(monkeypatch, env):
+# ─── 값 규칙 — 필드 목록이 아니라 「변환 규칙」을 잠근다 ──────────────────
+def test_site_url_drops_trailing_slash(monkeypatch):
     """site_url + link 로 URL 을 만들므로 끝 슬래시가 남으면 `//` 가 된다."""
     monkeypatch.setenv("DW_SITE", "https://sites.google.com/")
 
@@ -300,23 +306,16 @@ def test_from_config_strips_trailing_slash_on_site_url(monkeypatch, env):
 
 
 @pytest.mark.parametrize("value, expected", [("1", True), ("0", False)])
-def test_flags_reach_the_config(monkeypatch, env, value: str, expected: bool):
+def test_flag_reaches_the_config(monkeypatch, value: str, expected: bool):
+    """헬퍼 규칙이 실제 설정 객체까지 도달하는지 — 배선을 한 번만 확인한다."""
     monkeypatch.setenv("DO_CRAWL", value)
 
     assert CrawlConfig.from_config().do_crawl is expected
 
 
-def test_blank_flag_stops_config(monkeypatch, env):
+def test_blank_flag_stops_config(monkeypatch):
     """빈 플래그는 조용히 False 가 되지 않는다."""
     monkeypatch.setenv("DO_CRAWL", "")
 
     with pytest.raises(RuntimeError):
         CrawlConfig.from_config()
-
-
-def test_config_is_frozen(env):
-    """설정은 실행 중에 바뀌지 않는다. 바꾸려면 dataclasses.replace 로 새로 만든다."""
-    config = CrawlConfig.from_config()
-
-    with pytest.raises(FrozenInstanceError):
-        config.index_file = CORPORA / "other.json"  # type: ignore[misc]

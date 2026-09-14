@@ -6,9 +6,16 @@ from typing import Any, Self
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
-I_F = "INDEX_FILE"
-M_F = "META_FILE"
-M_R_F = "META_RESULT_FILE"
+
+# 파일명이 겹치면 뒤엣것이 앞엣것을 덮어쓴다. 키가 늘어도 검사가 따라오도록
+# 이름을 한 곳에 모아 두고 순회한다 — 개별 상수로 두면 추가할 때마다 검사를 빠뜨린다.
+FILE_NAME_ENVS: tuple[str, ...] = (
+    "INDEX_FILE",
+    "META_FILE",
+    "META_RESULT_FILE",
+    "MODEL_COMPARE_FILE",
+    "CHUNK_RESULT_FILE",
+)
 
 """
 title: claude 작성 python script
@@ -24,6 +31,7 @@ class Config:
     index_file: Path
     meta_file: Path
     meta_result_file: Path
+    model_compare_file: Path
     chunk_result_file: Path
 
     @classmethod
@@ -44,6 +52,7 @@ class Config:
             "index_file": require_json_env("INDEX_FILE"),
             "meta_file": require_json_env("META_FILE"),
             "meta_result_file": require_json_env("META_RESULT_FILE"),
+            "model_compare_file": require_json_env("MODEL_COMPARE_FILE"),
             "chunk_result_file": require_json_env("CHUNK_RESULT_FILE"),
         }
 
@@ -52,6 +61,13 @@ class Config:
         """서브클래스가 추가한 필드만 돌려주는 훅. 베이스는 추가분이 없다."""
         return {}
 
+    @classmethod
+    def is_not_set(cls, instance, name) -> bool:
+        if not isinstance(instance, cls):
+            raise ValueError("wrong instance usage")
+
+        return getattr(instance, name) is None
+
 
 def load_config() -> None:
     """공용 설정을 먼저 읽고, 로컬 비밀값이 덮어쓰게 한다."""
@@ -59,9 +75,10 @@ def load_config() -> None:
     load_dotenv(ROOT / ".env.shared", override=True)
     load_dotenv(ROOT / ".env", override=True)
 
-    if len({require_env(I_F), require_env(M_F), require_env(M_R_F)}) < 3:
+    names = [require_env(name) for name in FILE_NAME_ENVS]
+    if len(set(names)) < len(names):
         raise RuntimeError(
-            f"환경변수 {I_F}, {M_F}, {M_R_F} 중 같은 값이 있습니다. 각각의 파일명을 지정해 주세요."
+            f"환경변수 {', '.join(FILE_NAME_ENVS)} 중 같은 값이 있습니다. 각각의 파일명을 지정해 주세요."
         )
 
 
@@ -69,6 +86,12 @@ def get_env(name: str) -> str | None:
     """미설정, 빈 문자열, 공백만 입력을 모두 걸러낸 환경변수 값을 돌려준다."""
     value = os.getenv(name, "").strip()
     return None if not value else value
+
+
+def get_int_env(name: str) -> int | None:
+    """미설정, 빈 문자열, 공백만 입력을 모두 걸러낸 환경변수 값을 돌려준다."""
+    value = os.getenv(name, "").strip()
+    return None if not value else int(value)
 
 
 def require_json_env(name: str) -> Path:

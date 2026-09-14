@@ -13,7 +13,7 @@ class CrawlConfig(Config):
     do_create: bool
 
     @classmethod
-    def _extra_kwargs(cls) -> dict[str, Any]:
+    def _extra_kwargs(cls) -> dict[str, str | bool]:
         return {
             "site_url": require_env("DW_SITE").rstrip("/"),
             "url_keyword": require_env("URL_KEYWORD"),
