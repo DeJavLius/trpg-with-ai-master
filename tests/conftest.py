@@ -5,8 +5,8 @@ from pathlib import Path
 
 import pytest
 
-from rag_with_trpg.config import ROOT, Config, load_config
-from rag_with_trpg.crawl.config import CrawlConfig
+from trpg_with_ai_master.config import ROOT, Config, load_config
+from trpg_with_ai_master.crawl.config import CrawlConfig
 
 """
 title: claude 작성 python script
@@ -26,7 +26,7 @@ def env() -> None:
     USER_AGENT 만 기본값을 채운다 — .env(비커밋)에만 있어서 새 클론에는 없다.
     """
     load_config()
-    os.environ.setdefault("USER_AGENT", "rag-with-trpg-test")
+    os.environ.setdefault("USER_AGENT", "trpg-with-ai-master-test")
 
 
 def sandboxed(config: Config, root: Path, *, raw_path: Path) -> Config:
@@ -113,7 +113,7 @@ def make_config(tmp_path: Path, raw_dir: Path):
         config = sandboxed(CrawlConfig.from_config(), tmp_path, raw_path=raw_dir)
         defaults = {
             "site_url": "https://example.invalid",
-            "user_agent": "rag-with-trpg-test",
+            "user_agent": "trpg-with-ai-master-test",
             "do_crawl": False,
             "do_create": False,
         }
@@ -158,7 +158,7 @@ def corpus_config(corpus: Path) -> CrawlConfig:
     return replace(
         config,
         site_url=SITE_URL,
-        user_agent="rag-with-trpg-test",
+        user_agent="trpg-with-ai-master-test",
         do_crawl=False,
         do_create=False,
     )

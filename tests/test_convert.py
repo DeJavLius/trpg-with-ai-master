@@ -5,8 +5,8 @@ import pytest
 from bs4 import BeautifulSoup
 from conftest import EXPECTED_MD, INDEX_TITLE
 
-from rag_with_trpg.crawl import convert
-from rag_with_trpg.crawl.convert import (
+from trpg_with_ai_master.crawl import convert
+from trpg_with_ai_master.crawl.convert import (
     converter,
     extract,
     is_index_page,

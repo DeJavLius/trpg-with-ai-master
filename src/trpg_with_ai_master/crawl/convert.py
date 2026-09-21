@@ -3,9 +3,9 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from markdownify import markdownify as md
 
-from rag_with_trpg.crawl.config import CrawlConfig
-from rag_with_trpg.crawl.util import clear_dir, title_decision
-from rag_with_trpg.util import save_file
+from trpg_with_ai_master.crawl.config import CrawlConfig
+from trpg_with_ai_master.crawl.util import clear_dir, title_decision
+from trpg_with_ai_master.util import save_file
 
 
 def converter(

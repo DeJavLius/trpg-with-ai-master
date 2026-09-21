@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Any
 
-from rag_with_trpg.config import Config, require_bool_env, require_env
+from trpg_with_ai_master.config import Config, require_bool_env, require_env
 
 
 @dataclass(frozen=True, kw_only=True)

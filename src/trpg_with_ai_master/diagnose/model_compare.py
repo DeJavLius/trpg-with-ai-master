@@ -7,10 +7,10 @@ from huggingface_hub import try_to_load_from_cache
 from huggingface_hub.file_download import _CACHED_NO_EXIST
 from transformers import AutoTokenizer
 
-from rag_with_trpg.crawl.index_mapped import PageEntry
-from rag_with_trpg.diagnose.config import DiagnoseConfig
-from rag_with_trpg.diagnose.diagnos import missing_md_files
-from rag_with_trpg.util import load_json, save_file
+from trpg_with_ai_master.crawl.index_mapped import PageEntry
+from trpg_with_ai_master.diagnose.config import DiagnoseConfig
+from trpg_with_ai_master.diagnose.diagnos import missing_md_files
+from trpg_with_ai_master.util import load_json, save_file
 
 # 계열 판정용 고정 문자열 — 한글 산문·숫자+단위·영문·기호를 한 문장에 넣는다.
 # 계열이 갈리는 지점이 거기라, 순한글 문장으로는 XLM-R 셋이 안 갈린다.

@@ -9,7 +9,7 @@ AI 에이전트에게 TRPG 문서를 RAG화 하여 게임 마스터 역할을 �
 
 ```bash
 uv sync
-uv run rag-with-trpg
+uv run trpg-with-ai-master
 ```
 
 ## 라이선스

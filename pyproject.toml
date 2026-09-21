@@ -1,5 +1,5 @@
 [project]
-name = "rag-with-trpg"
+name = "trpg-with-ai-master"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.scripts]
-rag-with-trpg = "rag_with_trpg:main"
+trpg-with-ai-master = "trpg_with_ai_master:main"
 
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]

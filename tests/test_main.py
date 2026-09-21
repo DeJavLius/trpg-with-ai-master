@@ -1,6 +1,6 @@
 import pytest
 
-from rag_with_trpg.crawl.__main__ import file_check
+from trpg_with_ai_master.crawl.__main__ import file_check
 
 """
 title: claude 작성 python script — 테스트 본문

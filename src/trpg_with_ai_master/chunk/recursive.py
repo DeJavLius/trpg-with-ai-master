@@ -1,4 +1,4 @@
-from rag_with_trpg.chunk.type import Chunk
+from trpg_with_ai_master.chunk.type import Chunk
 
 SEPARATORS = ["\n## ", "\n\n", "\n", None, ""]  # None = 문장 정규식, "" = 글자
 

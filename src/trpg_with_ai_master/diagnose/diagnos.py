@@ -5,10 +5,10 @@ from pathlib import Path
 
 from transformers import AutoTokenizer, SentencePieceBackend, TokenizersBackend
 
-from rag_with_trpg.crawl.convert import extract
-from rag_with_trpg.crawl.index_mapped import PageEntry
-from rag_with_trpg.diagnose.config import DiagnoseConfig
-from rag_with_trpg.util import header_counting, load_json, save_file
+from trpg_with_ai_master.crawl.convert import extract
+from trpg_with_ai_master.crawl.index_mapped import PageEntry
+from trpg_with_ai_master.diagnose.config import DiagnoseConfig
+from trpg_with_ai_master.util import header_counting, load_json, save_file
 
 
 @dataclass(kw_only=True)

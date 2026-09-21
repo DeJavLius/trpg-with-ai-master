@@ -1,4 +1,4 @@
-from rag_with_trpg.chunk.type import Chunk
+from trpg_with_ai_master.chunk.type import Chunk
 
 # ── 계약 C1~C7 ────────────────────────────────────────────────────
 #

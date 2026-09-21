@@ -1,7 +1,7 @@
-from rag_with_trpg.config import load_config
-from rag_with_trpg.diagnose.config import DiagnoseConfig
-from rag_with_trpg.diagnose.diagnos import diagnose
-from rag_with_trpg.diagnose.model_compare import compare
+from trpg_with_ai_master.config import load_config
+from trpg_with_ai_master.diagnose.config import DiagnoseConfig
+from trpg_with_ai_master.diagnose.diagnos import diagnose
+from trpg_with_ai_master.diagnose.model_compare import compare
 
 
 def main() -> None:

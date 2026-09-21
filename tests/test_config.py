@@ -2,9 +2,9 @@ from dataclasses import FrozenInstanceError, fields
 
 import pytest
 
-import rag_with_trpg.config as config_module
-from rag_with_trpg.chunk.config import ChunkConfig
-from rag_with_trpg.config import (
+import trpg_with_ai_master.config as config_module
+from trpg_with_ai_master.chunk.config import ChunkConfig
+from trpg_with_ai_master.config import (
     ROOT,
     Config,
     get_env,
@@ -15,8 +15,8 @@ from rag_with_trpg.config import (
     require_json_env,
     require_path,
 )
-from rag_with_trpg.crawl.config import CrawlConfig
-from rag_with_trpg.diagnose.config import DiagnoseConfig
+from trpg_with_ai_master.crawl.config import CrawlConfig
+from trpg_with_ai_master.diagnose.config import DiagnoseConfig
 
 """
 title: claude 작성 python script — 테스트 본문

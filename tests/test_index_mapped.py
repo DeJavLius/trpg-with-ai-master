@@ -6,9 +6,9 @@ import pytest
 from bs4 import BeautifulSoup
 from conftest import EXPECTED_EXCLUDED, EXPECTED_MD, EXPECTED_PAGES, INDEX_TITLE
 
-from rag_with_trpg.crawl.config import CrawlConfig
-from rag_with_trpg.crawl.convert import converter
-from rag_with_trpg.crawl.index_mapped import (
+from trpg_with_ai_master.crawl.config import CrawlConfig
+from trpg_with_ai_master.crawl.convert import converter
+from trpg_with_ai_master.crawl.index_mapped import (
     PageEntry,
     exclude_file_check,
     load_index,

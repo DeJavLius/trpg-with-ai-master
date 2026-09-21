@@ -1,5 +1,5 @@
-from rag_with_trpg.chunk.fixed import fixed_chunking
-from rag_with_trpg.config import load_config
+from trpg_with_ai_master.chunk.fixed import fixed_chunking
+from trpg_with_ai_master.config import load_config
 
 
 def main():

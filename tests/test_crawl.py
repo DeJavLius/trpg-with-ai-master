@@ -5,9 +5,9 @@ import httpx
 import pytest
 from conftest import EXPECTED_PAGES, URL_KEYWORD
 
-from rag_with_trpg.crawl import crawl as crawl_mod
-from rag_with_trpg.crawl.config import CrawlConfig
-from rag_with_trpg.crawl.crawl import crawler, enroll_all_links, fetch_handler
+from trpg_with_ai_master.crawl import crawl as crawl_mod
+from trpg_with_ai_master.crawl.config import CrawlConfig
+from trpg_with_ai_master.crawl.crawl import crawler, enroll_all_links, fetch_handler
 
 """
 title: claude 작성 python script — 테스트 본문

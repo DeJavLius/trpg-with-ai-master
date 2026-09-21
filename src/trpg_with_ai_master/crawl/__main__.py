@@ -1,8 +1,8 @@
-from rag_with_trpg.config import load_config
-from rag_with_trpg.crawl.config import CrawlConfig
-from rag_with_trpg.crawl.convert import converter
-from rag_with_trpg.crawl.crawl import crawler
-from rag_with_trpg.crawl.index_mapped import (
+from trpg_with_ai_master.config import load_config
+from trpg_with_ai_master.crawl.config import CrawlConfig
+from trpg_with_ai_master.crawl.convert import converter
+from trpg_with_ai_master.crawl.crawl import crawler
+from trpg_with_ai_master.crawl.index_mapped import (
     exclude_file_check,
     mapper,
     show_markdown_heading,

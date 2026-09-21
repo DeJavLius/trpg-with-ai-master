@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from rag_with_trpg.config import Config, get_int_env
+from trpg_with_ai_master.config import Config, get_int_env
 
 
 @dataclass(frozen=True, kw_only=True)

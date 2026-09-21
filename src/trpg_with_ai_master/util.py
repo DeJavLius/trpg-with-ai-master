@@ -2,7 +2,7 @@ import json
 from dataclasses import fields
 from pathlib import Path
 
-from rag_with_trpg.config import Config
+from trpg_with_ai_master.config import Config
 
 HEAD_SECTIONS: str = "###### "
 

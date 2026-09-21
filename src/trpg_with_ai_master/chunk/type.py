@@ -17,3 +17,10 @@ class ChunkSnapshot(Chunk):
     model_name: str
     chunks: list[Chunk]
     finish_date: str
+
+
+@dataclass(frozen=True, kw_only=True)
+class Piece:
+    rung: int
+    start: int
+    end: int

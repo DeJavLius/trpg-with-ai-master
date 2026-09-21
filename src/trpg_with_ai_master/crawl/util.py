@@ -3,7 +3,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
-from rag_with_trpg.util import header_counting
+from trpg_with_ai_master.util import header_counting
 
 # crawl 도메인 전용 헬퍼. 최상위 util.py 는 「도메인을 모르는 순수 헬퍼」로 두고,
 # bs4 · 사이트 <title> 규약(D-28) · 마크다운 파일을 아는 것만 여기 남긴다.
