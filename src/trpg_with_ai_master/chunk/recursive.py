@@ -1,6 +1,8 @@
 from trpg_with_ai_master.chunk.type import Chunk
 
-SEPARATORS = ["\n## ", "\n\n", "\n", None, ""]  # None = 문장 정규식, "" = 글자
+# 1단은 정규식이다 (가이드 2-2-1 정정) — h1 은 38/38 페이지에 있고 h2 는 11/38 뿐이라
+# "\n## " 로 두면 홈·「국면의 예」를 한 번도 못 자른다. 무효 페이지 27 -> 25
+SEPARATORS = [r"(?m)^#{1,6} ", "\n\n", "\n", None, ""]  # None = 문장 정규식, "" = 글자
 
 
 def recursive_chunking(
