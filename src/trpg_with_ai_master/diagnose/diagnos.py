@@ -12,6 +12,13 @@ from trpg_with_ai_master.util import header_counting, load_json, save_file
 
 
 @dataclass(kw_only=True)
+class SectionMeta:
+    section_title: str
+    chars: int = 0
+    middle: int = 0
+
+
+@dataclass(kw_only=True)
 class DiagnoseMeta:
     title: str
     chars: int
@@ -19,6 +26,7 @@ class DiagnoseMeta:
     tokens: int = 0
     chars_per_token: float = 0.0
     unk_tokens: dict[str, int] | None = None
+    sections: dict[str, list[SectionMeta]] | None = None
 
 
 @dataclass(kw_only=True)
@@ -111,14 +119,6 @@ def slug_check(index_pages: list[PageEntry]) -> int:
 
 
 def missing_md_files(base_path: str, extract_pages: list[PageEntry]) -> list[str]:
-    """인덱스가 가리키는 md 중 실제로 없는 것들 — D-35 6항목의 5번.
-
-    bool 이 아니라 목록을 돌려준다. 「하나라도 없다」만 알면 38건 중 어느 것인지
-    다시 뒤져야 하고, 그 추적 비용 때문에 결국 아무도 안 보게 된다.
-
-    page.md 가 None 인 엔트리(제외 건)는 여기 오면 안 된다 — 호출부가 거르지만
-    가정을 함수 밖에 두면 호출부가 하나 늘 때 조용히 TypeError 가 된다.
-    """
     return [
         page.md
         for page in extract_pages
@@ -158,7 +158,6 @@ def meta_analyze(
     tokenizer: TokenizersBackend | SentencePieceBackend,
     index_pages: list[PageEntry],
 ) -> list[DiagnoseMeta]:
-
     meta_list: list[DiagnoseMeta] = []
     for i, index_page in enumerate(index_pages):
         meta = DiagnoseMeta(
@@ -166,6 +165,9 @@ def meta_analyze(
         )
         markdown_path = Path(config.base_path + index_page.md)
         markdown_file = markdown_path.read_text(encoding="utf-8")
+
+        if index_page.title == "액션":
+            analyze_heading_section_middle(markdown_file, meta.headings)
 
         unk_text_dict: dict[str, int] = {}
         encode_token = tokenizer(
@@ -198,3 +200,24 @@ def meta_analyze(
         meta_list.append(meta)
 
     return meta_list
+
+
+def analyze_heading_section_middle(text: str):
+    header_sections = {"h" + str(a + 1): [] for a in range(6)}
+    lines = text.split("\n")
+    heads = []
+
+    for li, l in enumerate(lines):
+        if l.find("# ") > -1:
+            heads.append(li)
+
+    for i, hi in enumerate(heads):
+        heading = lines[hi].count("#")
+        header = "h" + str()
+
+        last_section_pos = len(text)
+        if i < len(heads) - 1:
+            last_section_pos = heads[i + 1]
+
+        section_title =
+        header_sections[header].append(SectionMeta())

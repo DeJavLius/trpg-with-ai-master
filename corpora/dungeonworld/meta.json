@@ -16,7 +16,8 @@
       "뉩": 1,
       "닢": 2,
       "뭅": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "감사의 말씀(영문판)",
@@ -31,7 +32,8 @@
     ],
     "tokens": 1196,
     "chars_per_token": 2.576923076923077,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "국면",
@@ -48,7 +50,8 @@
     "chars_per_token": 1.880643166357452,
     "unk_tokens": {
       "뉩": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "세계",
@@ -67,7 +70,8 @@
       "뭅": 1,
       "삯": 1,
       "섐": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "천변만화",
@@ -84,7 +88,8 @@
     "chars_per_token": 2.0079650565262077,
     "unk_tokens": {
       "뭅": 2
-    }
+    },
+    "sections": null
   },
   {
     "title": "캐릭터 만들기",
@@ -101,7 +106,8 @@
     "chars_per_token": 1.9929732103645148,
     "unk_tokens": {
       "씐": 2
-    }
+    },
+    "sections": null
   },
   {
     "title": "플레이의 예",
@@ -119,7 +125,8 @@
     "unk_tokens": {
       "곘": 1,
       "쏩": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "다른 시스템에서의 변환",
@@ -136,7 +143,8 @@
     "chars_per_token": 1.9534019439679817,
     "unk_tokens": {
       "욀": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "서문",
@@ -153,7 +161,8 @@
     "chars_per_token": 1.8717878622197923,
     "unk_tokens": {
       "멉": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "마스터",
@@ -168,7 +177,8 @@
     ],
     "tokens": 7959,
     "chars_per_token": 1.9733634878753612,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "괴물",
@@ -185,7 +195,8 @@
     "chars_per_token": 1.8330824552600768,
     "unk_tokens": {
       "닢": 12
-    }
+    },
+    "sections": null
   },
   {
     "title": "첫 세션",
@@ -202,7 +213,8 @@
     "chars_per_token": 2.0279890477639184,
     "unk_tokens": {
       "닢": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "가르치기",
@@ -217,7 +229,8 @@
     ],
     "tokens": 1828,
     "chars_per_token": 2.0464989059080962,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "액션",
@@ -237,7 +250,8 @@
       "쏩": 2,
       "걺": 1,
       "닢": 2
-    }
+    },
+    "sections": null
   },
   {
     "title": "던전월드 한국어 공개판 임시 웹페이지",
@@ -252,7 +266,8 @@
     ],
     "tokens": 487,
     "chars_per_token": 1.995893223819302,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "인스턴트 NPC",
@@ -267,7 +282,8 @@
     ],
     "tokens": 2186,
     "chars_per_token": 1.7662397072278133,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "장비",
@@ -287,7 +303,8 @@
       "뺍": 1,
       "삯": 3,
       "똬": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "국면의 예: 백색 관문이 열리는 날",
@@ -302,7 +319,8 @@
     ],
     "tokens": 600,
     "chars_per_token": 1.78,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "드루이드",
@@ -317,7 +335,8 @@
     ],
     "tokens": 2777,
     "chars_per_token": 1.8314728123874684,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "전사",
@@ -334,7 +353,8 @@
     "chars_per_token": 1.8018617021276595,
     "unk_tokens": {
       "닢": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "성기사",
@@ -349,7 +369,8 @@
     ],
     "tokens": 2384,
     "chars_per_token": 1.7986577181208054,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "마법사",
@@ -366,7 +387,8 @@
     "chars_per_token": 1.8904657933042213,
     "unk_tokens": {
       "씐": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "도적",
@@ -384,7 +406,8 @@
     "unk_tokens": {
       "섕": 1,
       "닢": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "사제",
@@ -401,7 +424,8 @@
     "chars_per_token": 1.8161350844277673,
     "unk_tokens": {
       "멉": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "음유시인",
@@ -419,7 +443,8 @@
     "unk_tokens": {
       "닢": 1,
       "멉": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "사냥꾼",
@@ -434,7 +459,8 @@
     ],
     "tokens": 2509,
     "chars_per_token": 1.8397768035073734,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "깊고도 깊은 곳",
@@ -451,7 +477,8 @@
     "chars_per_token": 1.7880417589370452,
     "unk_tokens": {
       "뭅": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "이계의 존재",
@@ -466,7 +493,8 @@
     ],
     "tokens": 3219,
     "chars_per_token": 1.8518173345759552,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "괴물 이름 한영 대조표",
@@ -483,7 +511,8 @@
     "chars_per_token": 2.454298642533937,
     "unk_tokens": {
       "겡": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "캄캄한 동굴",
@@ -498,7 +527,8 @@
     ],
     "tokens": 3637,
     "chars_per_token": 1.8196315644762167,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "부글거리는 늪지",
@@ -516,7 +546,8 @@
     "unk_tokens": {
       "겡": 6,
       "꾄": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "이민족의 무리",
@@ -534,7 +565,8 @@
     "unk_tokens": {
       "뭍": 1,
       "떱": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "사람들",
@@ -552,7 +584,8 @@
     "unk_tokens": {
       "퇘": 1,
       "닢": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "언데드 군단",
@@ -567,7 +600,8 @@
     ],
     "tokens": 4216,
     "chars_per_token": 1.8372865275142316,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "어두운 숲속",
@@ -585,7 +619,8 @@
     "unk_tokens": {
       "옭": 1,
       "샙": 1
-    }
+    },
+    "sections": null
   },
   {
     "title": "뒤틀린 실험체",
@@ -600,7 +635,8 @@
     ],
     "tokens": 3303,
     "chars_per_token": 1.8619436875567665,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "사제 주문",
@@ -615,7 +651,8 @@
     ],
     "tokens": 2600,
     "chars_per_token": 2.2207692307692306,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   },
   {
     "title": "마법사 주문",
@@ -630,6 +667,7 @@
     ],
     "tokens": 2689,
     "chars_per_token": 2.4812197843064334,
-    "unk_tokens": null
+    "unk_tokens": null,
+    "sections": null
   }
 ]
