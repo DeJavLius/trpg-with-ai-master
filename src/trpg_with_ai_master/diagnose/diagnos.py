@@ -1,4 +1,5 @@
 import json
+import re
 import statistics
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -15,7 +16,7 @@ from trpg_with_ai_master.util import header_counting, load_json, save_file
 class SectionMeta:
     section_title: str
     chars: int = 0
-    middle: int = 0
+    chars_nonspace: int = 0
 
 
 @dataclass(kw_only=True)
@@ -30,9 +31,21 @@ class DiagnoseMeta:
 
 
 @dataclass(kw_only=True)
+class ResultDetail:
+    title: str
+    n: int = 0
+    m: int = 0
+    m_nonspace: int = 0
+    min: int = 0
+    max: int = 0
+    over_budget_ratio: float = 0.0
+
+
+@dataclass(kw_only=True)
 class DiagnoseResult:
     max_sequence_length: int = 0
     count: int = 0
+    detail: list[ResultDetail] | None = None
     average_cpt: float = 0.0
     max_cpt: float = 0.0
     min_cpt: float = 0.0
@@ -47,6 +60,7 @@ class DiagnoseResult:
             + f"페이지별 자/토큰(page size / token size) 비율 > 평균: {self.average_cpt} | 최소: {self.min_cpt} | 최대: {self.max_cpt}\n"
             + f"상위/하위 10% 비율 > 상위 10%: {self.upper_ten_percent_cpt} | 하위 10%: {self.lower_ten_percent_cpt}\n"
             + f"모델 사이즈({self.max_sequence_length})에 따른 안전 토큰: {self.safe_chars}\n"
+            + f"페이지별 중앙값: \n"
             + f"토큰화가 불리한 페이지 순위: \n{"\n".join([f"{i + 1}. {v}" for i, v in enumerate(self.cpt_ranking_by_worst)])}"
         )
 
@@ -166,8 +180,7 @@ def meta_analyze(
         markdown_path = Path(config.base_path + index_page.md)
         markdown_file = markdown_path.read_text(encoding="utf-8")
 
-        if index_page.title == "액션":
-            analyze_heading_section_middle(markdown_file, meta.headings)
+        meta.sections = analyze_heading_section_middle(markdown_file)
 
         unk_text_dict: dict[str, int] = {}
         encode_token = tokenizer(
@@ -202,22 +215,39 @@ def meta_analyze(
     return meta_list
 
 
+HEADING_RE = re.compile(r"^(#{1,6}) (.*)$")
+WHITESPACE_RE = re.compile(r"\s")
+
+
 def analyze_heading_section_middle(text: str):
-    header_sections = {"h" + str(a + 1): [] for a in range(6)}
+    header_sections: dict[str, list[SectionMeta]] = {f"h{n}": [] for n in range(1, 7)}
     lines = text.split("\n")
-    heads = []
+    heads = [(li, m) for li, line in enumerate(lines) if (m := HEADING_RE.match(line))]
 
-    for li, l in enumerate(lines):
-        if l.find("# ") > -1:
-            heads.append(li)
+    for i, (hi, match) in enumerate(heads):
+        end = heads[i + 1][0] if i + 1 < len(heads) else len(lines)
+        body = "\n".join(lines[hi + 1:end])
+        header_sections[f"h{len(match.group(1))}"].append(
+            SectionMeta(section_title=match.group(2).strip(), chars=len(body),
+                        chars_nonspace=len(WHITESPACE_RE.sub("", body))))
 
-    for i, hi in enumerate(heads):
-        heading = lines[hi].count("#")
-        header = "h" + str()
+    return header_sections
 
-        last_section_pos = len(text)
-        if i < len(heads) - 1:
-            last_section_pos = heads[i + 1]
-
-        section_title =
-        header_sections[header].append(SectionMeta())
+# def leaf_sections(sections: dict[str, list[SectionMeta]]) -> list[SectionMeta]:
+#     # 헤딩 1개 페이지는 내부 경계가 없어 M 정의 범위 밖 (§2-1 적용 범위)
+#     if sum(len(v) for v in sections.values()) < 2:
+#         return []
+#     return next((v for k in ("h6", "h5", "h4", "h3", "h2", "h1") if (v := sections[k])), [])
+#
+#
+# def measure_m(meta_list: list[DiagnoseMeta], budget: int) -> dict[str, float]:
+#     pool = [s for meta in meta_list if meta.sections for s in leaf_sections(meta.sections)]
+#     chars = [s.chars for s in pool]
+#     return {
+#         "n": len(pool),
+#         "m": statistics.median(chars),
+#         "m_nonspace": statistics.median(s.chars_nonspace for s in pool),
+#         "min": min(chars),
+#         "max": max(chars),
+#         "over_budget_ratio": sum(c > budget for c in chars) / len(chars),
+#     }

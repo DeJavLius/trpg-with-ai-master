@@ -17,7 +17,20 @@
       "닢": 2,
       "뭅": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "플레이 하는 법",
+          "chars": 25419,
+          "middle": 12709
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "감사의 말씀(영문판)",
@@ -33,7 +46,20 @@
     "tokens": 1196,
     "chars_per_token": 2.576923076923077,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "감사의 말씀(영문판)",
+          "chars": 3036,
+          "middle": 1518
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "국면",
@@ -51,7 +77,76 @@
     "unk_tokens": {
       "뉩": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "국면",
+          "chars": 508,
+          "middle": 254
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "위험요소",
+          "chars": 370,
+          "middle": 185
+        },
+        {
+          "section_title": "캠페인 국면과 모험 국면",
+          "chars": 1230,
+          "middle": 615
+        },
+        {
+          "section_title": "국면 만들기",
+          "chars": 428,
+          "middle": 214
+        },
+        {
+          "section_title": "위험요소 만들기",
+          "chars": 1827,
+          "middle": 913
+        },
+        {
+          "section_title": "위험요소의 종류",
+          "chars": 1784,
+          "middle": 892
+        },
+        {
+          "section_title": "요약 및 등장인물",
+          "chars": 806,
+          "middle": 403
+        },
+        {
+          "section_title": "흉조",
+          "chars": 1501,
+          "middle": 750
+        },
+        {
+          "section_title": "재앙",
+          "chars": 565,
+          "middle": 282
+        },
+        {
+          "section_title": "주제 질문",
+          "chars": 811,
+          "middle": 405
+        },
+        {
+          "section_title": "국면의 해소",
+          "chars": 940,
+          "middle": 470
+        },
+        {
+          "section_title": "동시다발적 모험 국면",
+          "chars": 962,
+          "middle": 481
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "세계",
@@ -71,7 +166,66 @@
       "삯": 1,
       "섐": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "세계",
+          "chars": 557,
+          "middle": 278
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "세계 만들기",
+          "chars": 708,
+          "middle": 354
+        },
+        {
+          "section_title": "사람 사는 곳에서",
+          "chars": 540,
+          "middle": 270
+        },
+        {
+          "section_title": "주거지의 요소들",
+          "chars": 4824,
+          "middle": 2412
+        },
+        {
+          "section_title": "마을 만들기",
+          "chars": 578,
+          "middle": 289
+        },
+        {
+          "section_title": "읍 만들기",
+          "chars": 556,
+          "middle": 278
+        },
+        {
+          "section_title": "성채 만들기",
+          "chars": 582,
+          "middle": 291
+        },
+        {
+          "section_title": "도시 만들기",
+          "chars": 676,
+          "middle": 338
+        },
+        {
+          "section_title": "캠페인 지도상의 국면",
+          "chars": 475,
+          "middle": 237
+        },
+        {
+          "section_title": "캠페인 지도의 갱신",
+          "chars": 2189,
+          "middle": 1094
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "천변만화",
@@ -89,7 +243,86 @@
     "unk_tokens": {
       "뭅": 2
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "천변만화",
+          "chars": 334,
+          "middle": 167
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "액션 만들기",
+          "chars": 275,
+          "middle": 137
+        },
+        {
+          "section_title": "시작하기",
+          "chars": 476,
+          "middle": 238
+        },
+        {
+          "section_title": "액션의 종류",
+          "chars": 903,
+          "middle": 451
+        },
+        {
+          "section_title": "세계 액션",
+          "chars": 818,
+          "middle": 409
+        },
+        {
+          "section_title": "직업 액션",
+          "chars": 853,
+          "middle": 426
+        },
+        {
+          "section_title": "새 직업",
+          "chars": 2312,
+          "middle": 1156
+        },
+        {
+          "section_title": "부가 직업",
+          "chars": 950,
+          "middle": 475
+        },
+        {
+          "section_title": "모험 액션",
+          "chars": 1249,
+          "middle": 624
+        },
+        {
+          "section_title": "액션의 구조",
+          "chars": 1334,
+          "middle": 667
+        },
+        {
+          "section_title": "기초 바꾸기",
+          "chars": 1059,
+          "middle": 529
+        },
+        {
+          "section_title": "액션의 발전 과정",
+          "chars": 1941,
+          "middle": 970
+        },
+        {
+          "section_title": "마스터",
+          "chars": 2013,
+          "middle": 1006
+        },
+        {
+          "section_title": "괴물",
+          "chars": 775,
+          "middle": 387
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "캐릭터 만들기",
@@ -107,7 +340,86 @@
     "unk_tokens": {
       "씐": 2
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "캐릭터 만들기",
+          "chars": 357,
+          "middle": 178
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "1. 직업을 고른다",
+          "chars": 295,
+          "middle": 147
+        },
+        {
+          "section_title": "2. 종족을 고른다",
+          "chars": 204,
+          "middle": 102
+        },
+        {
+          "section_title": "3. 이름을 고른다",
+          "chars": 29,
+          "middle": 14
+        },
+        {
+          "section_title": "4. 외모를 고른다",
+          "chars": 251,
+          "middle": 125
+        },
+        {
+          "section_title": "5. 능력치를 고른다",
+          "chars": 540,
+          "middle": 270
+        },
+        {
+          "section_title": "6. 능력수정치를 찾는다",
+          "chars": 132,
+          "middle": 66
+        },
+        {
+          "section_title": "7. 최대 HP를 정한다",
+          "chars": 111,
+          "middle": 55
+        },
+        {
+          "section_title": "8. 핵심 액션을 선택한다",
+          "chars": 275,
+          "middle": 137
+        },
+        {
+          "section_title": "9. 가치관을 고른다",
+          "chars": 221,
+          "middle": 110
+        },
+        {
+          "section_title": "10. 장비를 고른다",
+          "chars": 256,
+          "middle": 128
+        },
+        {
+          "section_title": "11. 캐릭터를 소개한다",
+          "chars": 506,
+          "middle": 253
+        },
+        {
+          "section_title": "12. 인연을 정한다",
+          "chars": 815,
+          "middle": 407
+        },
+        {
+          "section_title": "13. 플레이 준비를 한다",
+          "chars": 283,
+          "middle": 141
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "플레이의 예",
@@ -126,7 +438,20 @@
       "곘": 1,
       "쏩": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "플레이의 예",
+          "chars": 4203,
+          "middle": 2101
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "다른 시스템에서의 변환",
@@ -144,7 +469,20 @@
     "unk_tokens": {
       "욀": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "다름 시스템에서의 변환",
+          "chars": 6749,
+          "middle": 3374
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "서문",
@@ -162,7 +500,20 @@
     "unk_tokens": {
       "멉": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "서문",
+          "chars": 6728,
+          "middle": 3364
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "마스터",
@@ -178,7 +529,86 @@
     "tokens": 7959,
     "chars_per_token": 1.9733634878753612,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "마스터",
+          "chars": 377,
+          "middle": 188
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "던전월드에서의 마스터링",
+          "chars": 343,
+          "middle": 171
+        },
+        {
+          "section_title": "마스터링을 하는 법",
+          "chars": 1031,
+          "middle": 515
+        },
+        {
+          "section_title": "강령",
+          "chars": 1219,
+          "middle": 609
+        },
+        {
+          "section_title": "원칙",
+          "chars": 3058,
+          "middle": 1529
+        },
+        {
+          "section_title": "액션",
+          "chars": 766,
+          "middle": 383
+        },
+        {
+          "section_title": "액션은 언제 하는가",
+          "chars": 718,
+          "middle": 359
+        },
+        {
+          "section_title": "액션의 선택",
+          "chars": 320,
+          "middle": 160
+        },
+        {
+          "section_title": "액션의 사용",
+          "chars": 2940,
+          "middle": 1470
+        },
+        {
+          "section_title": "던전 액션",
+          "chars": 2613,
+          "middle": 1306
+        },
+        {
+          "section_title": "상황별 대처 요령",
+          "chars": 31,
+          "middle": 15
+        },
+        {
+          "section_title": "전투",
+          "chars": 550,
+          "middle": 275
+        },
+        {
+          "section_title": "덫",
+          "chars": 241,
+          "middle": 120
+        },
+        {
+          "section_title": "사람들",
+          "chars": 1077,
+          "middle": 538
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "괴물",
@@ -196,7 +626,61 @@
     "unk_tokens": {
       "닢": 12
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "괴물",
+          "chars": 98,
+          "middle": 49
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "괴물의 사용",
+          "chars": 1243,
+          "middle": 621
+        },
+        {
+          "section_title": "괴물의 요소",
+          "chars": 1194,
+          "middle": 597
+        },
+        {
+          "section_title": "수치 없는 괴물",
+          "chars": 335,
+          "middle": 167
+        },
+        {
+          "section_title": "괴물 태그",
+          "chars": 478,
+          "middle": 239
+        },
+        {
+          "section_title": "조직 태그",
+          "chars": 91,
+          "middle": 45
+        },
+        {
+          "section_title": "크기 태그",
+          "chars": 85,
+          "middle": 42
+        },
+        {
+          "section_title": "괴물 만들기",
+          "chars": 3561,
+          "middle": 1780
+        },
+        {
+          "section_title": "괴물의 환경",
+          "chars": 3507,
+          "middle": 1753
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "첫 세션",
@@ -214,7 +698,36 @@
     "unk_tokens": {
       "닢": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "첫 세션",
+          "chars": 351,
+          "middle": 175
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "사전 준비",
+          "chars": 803,
+          "middle": 401
+        },
+        {
+          "section_title": "시작하기",
+          "chars": 2077,
+          "middle": 1038
+        },
+        {
+          "section_title": "첫 번째 모험",
+          "chars": 3295,
+          "middle": 1647
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "가르치기",
@@ -230,7 +743,20 @@
     "tokens": 1828,
     "chars_per_token": 2.0464989059080962,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "가르치기",
+          "chars": 3691,
+          "middle": 1845
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "액션",
@@ -251,7 +777,136 @@
       "걺": 1,
       "닢": 2
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "액션",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "기본 액션",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "특수 액션",
+          "chars": 0,
+          "middle": 0
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "접근전",
+          "chars": 1720,
+          "middle": 860
+        },
+        {
+          "section_title": "사격",
+          "chars": 1447,
+          "middle": 723
+        },
+        {
+          "section_title": "위험 돌파",
+          "chars": 2004,
+          "middle": 1002
+        },
+        {
+          "section_title": "방어",
+          "chars": 1876,
+          "middle": 938
+        },
+        {
+          "section_title": "지식 더듬기",
+          "chars": 1364,
+          "middle": 682
+        },
+        {
+          "section_title": "상황 파악",
+          "chars": 1533,
+          "middle": 766
+        },
+        {
+          "section_title": "협상",
+          "chars": 1914,
+          "middle": 957
+        },
+        {
+          "section_title": "협조 또는 방해",
+          "chars": 1053,
+          "middle": 526
+        },
+        {
+          "section_title": "황천길",
+          "chars": 1609,
+          "middle": 804
+        },
+        {
+          "section_title": "짐",
+          "chars": 439,
+          "middle": 219
+        },
+        {
+          "section_title": "야영",
+          "chars": 364,
+          "middle": 182
+        },
+        {
+          "section_title": "파수",
+          "chars": 181,
+          "middle": 90
+        },
+        {
+          "section_title": "험난한 여정",
+          "chars": 879,
+          "middle": 439
+        },
+        {
+          "section_title": "레벨업",
+          "chars": 255,
+          "middle": 127
+        },
+        {
+          "section_title": "세션 종료",
+          "chars": 434,
+          "middle": 217
+        },
+        {
+          "section_title": "축하연",
+          "chars": 342,
+          "middle": 171
+        },
+        {
+          "section_title": "보급",
+          "chars": 174,
+          "middle": 87
+        },
+        {
+          "section_title": "회복",
+          "chars": 131,
+          "middle": 65
+        },
+        {
+          "section_title": "구인",
+          "chars": 398,
+          "middle": 199
+        },
+        {
+          "section_title": "악명",
+          "chars": 407,
+          "middle": 203
+        },
+        {
+          "section_title": "수련",
+          "chars": 267,
+          "middle": 133
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "던전월드 한국어 공개판 임시 웹페이지",
@@ -267,7 +922,35 @@
     "tokens": 487,
     "chars_per_token": 1.995893223819302,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "던전 월드",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "한국어 공개판",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "임시 페이지",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "던전월드 한국어 공개판",
+          "chars": 877,
+          "middle": 438
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "인스턴트 NPC",
@@ -283,7 +966,20 @@
     "tokens": 2186,
     "chars_per_token": 1.7662397072278133,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "인스턴트 NPC",
+          "chars": 3442,
+          "middle": 1721
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "장비",
@@ -304,7 +1000,106 @@
       "삯": 3,
       "똬": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "장비",
+          "chars": 451,
+          "middle": 225
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "일반 장비 태그",
+          "chars": 736,
+          "middle": 368
+        },
+        {
+          "section_title": "무기",
+          "chars": 197,
+          "middle": 98
+        },
+        {
+          "section_title": "무기 태그",
+          "chars": 964,
+          "middle": 482
+        },
+        {
+          "section_title": "무기 목록",
+          "chars": 1099,
+          "middle": 549
+        },
+        {
+          "section_title": "갑옷",
+          "chars": 66,
+          "middle": 33
+        },
+        {
+          "section_title": "갑옷 태그",
+          "chars": 292,
+          "middle": 146
+        },
+        {
+          "section_title": "갑옷 목록",
+          "chars": 301,
+          "middle": 150
+        },
+        {
+          "section_title": "던전 장비",
+          "chars": 968,
+          "middle": 484
+        },
+        {
+          "section_title": "독",
+          "chars": 323,
+          "middle": 161
+        },
+        {
+          "section_title": "서비스",
+          "chars": 856,
+          "middle": 428
+        },
+        {
+          "section_title": "식사",
+          "chars": 178,
+          "middle": 89
+        },
+        {
+          "section_title": "운송",
+          "chars": 837,
+          "middle": 418
+        },
+        {
+          "section_title": "토지와 건물",
+          "chars": 613,
+          "middle": 306
+        },
+        {
+          "section_title": "뇌물",
+          "chars": 335,
+          "middle": 167
+        },
+        {
+          "section_title": "선물과 사치품",
+          "chars": 477,
+          "middle": 238
+        },
+        {
+          "section_title": "전리품",
+          "chars": 305,
+          "middle": 152
+        },
+        {
+          "section_title": "마법 물품",
+          "chars": 11010,
+          "middle": 5505
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "국면의 예: 백색 관문이 열리는 날",
@@ -320,7 +1115,30 @@
     "tokens": 600,
     "chars_per_token": 1.78,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "국면의 예: 백색 관문이 열리는 날",
+          "chars": 0,
+          "middle": 0
+        },
+        {
+          "section_title": "위험요소",
+          "chars": 362,
+          "middle": 181
+        },
+        {
+          "section_title": "요약 및 등장인물",
+          "chars": 602,
+          "middle": 301
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "드루이드",
@@ -336,7 +1154,20 @@
     "tokens": 2777,
     "chars_per_token": 1.8314728123874684,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "드루이드",
+          "chars": 4851,
+          "middle": 2425
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "전사",
@@ -354,7 +1185,20 @@
     "unk_tokens": {
       "닢": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "전사",
+          "chars": 3799,
+          "middle": 1899
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "성기사",
@@ -370,7 +1214,20 @@
     "tokens": 2384,
     "chars_per_token": 1.7986577181208054,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "성기사",
+          "chars": 4054,
+          "middle": 2027
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "마법사",
@@ -388,7 +1245,20 @@
     "unk_tokens": {
       "씐": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "마법사",
+          "chars": 4954,
+          "middle": 2477
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "도적",
@@ -407,7 +1277,20 @@
       "섕": 1,
       "닢": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "도적",
+          "chars": 4428,
+          "middle": 2214
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "사제",
@@ -425,7 +1308,20 @@
     "unk_tokens": {
       "멉": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "사제",
+          "chars": 4583,
+          "middle": 2291
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "음유시인",
@@ -444,7 +1340,20 @@
       "닢": 1,
       "멉": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "음유시인",
+          "chars": 4268,
+          "middle": 2134
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "사냥꾼",
@@ -460,7 +1369,20 @@
     "tokens": 2509,
     "chars_per_token": 1.8397768035073734,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "사냥꾼",
+          "chars": 4374,
+          "middle": 2187
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "깊고도 깊은 곳",
@@ -478,7 +1400,20 @@
     "unk_tokens": {
       "뭅": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "깊고도 깊은 곳",
+          "chars": 5439,
+          "middle": 2719
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "이계의 존재",
@@ -494,7 +1429,20 @@
     "tokens": 3219,
     "chars_per_token": 1.8518173345759552,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "이계의 존재",
+          "chars": 5751,
+          "middle": 2875
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "괴물 이름 한영 대조표",
@@ -512,7 +1460,20 @@
     "unk_tokens": {
       "겡": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "괴물 이름 한영 대조표",
+          "chars": 2150,
+          "middle": 1075
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "캄캄한 동굴",
@@ -528,7 +1489,20 @@
     "tokens": 3637,
     "chars_per_token": 1.8196315644762167,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "캄캄한 동굴",
+          "chars": 6323,
+          "middle": 3161
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "부글거리는 늪지",
@@ -547,7 +1521,20 @@
       "겡": 6,
       "꾄": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "부글거리는 늪지",
+          "chars": 8626,
+          "middle": 4313
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "이민족의 무리",
@@ -566,7 +1553,20 @@
       "뭍": 1,
       "떱": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "이민족의 무리",
+          "chars": 8371,
+          "middle": 4185
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "사람들",
@@ -585,7 +1585,20 @@
       "퇘": 1,
       "닢": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "사람들",
+          "chars": 5540,
+          "middle": 2770
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "언데드 군단",
@@ -601,7 +1614,20 @@
     "tokens": 4216,
     "chars_per_token": 1.8372865275142316,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "언데드 군단",
+          "chars": 7470,
+          "middle": 3735
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "어두운 숲속",
@@ -620,7 +1646,20 @@
       "옭": 1,
       "샙": 1
     },
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "어두운 숲속",
+          "chars": 7746,
+          "middle": 3873
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "뒤틀린 실험체",
@@ -636,7 +1675,20 @@
     "tokens": 3303,
     "chars_per_token": 1.8619436875567665,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "뒤틀린 실험체",
+          "chars": 5910,
+          "middle": 2955
+        }
+      ],
+      "h2": [],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "사제 주문",
@@ -652,7 +1704,26 @@
     "tokens": 2600,
     "chars_per_token": 2.2207692307692306,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "사제 주문",
+          "chars": 0,
+          "middle": 0
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "암송주문",
+          "chars": 5559,
+          "middle": 2779
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   },
   {
     "title": "마법사 주문",
@@ -668,6 +1739,25 @@
     "tokens": 2689,
     "chars_per_token": 2.4812197843064334,
     "unk_tokens": null,
-    "sections": null
+    "sections": {
+      "h1": [
+        {
+          "section_title": "마법사",
+          "chars": 0,
+          "middle": 0
+        }
+      ],
+      "h2": [
+        {
+          "section_title": "간편주문",
+          "chars": 6459,
+          "middle": 3229
+        }
+      ],
+      "h3": [],
+      "h4": [],
+      "h5": [],
+      "h6": []
+    }
   }
 ]
