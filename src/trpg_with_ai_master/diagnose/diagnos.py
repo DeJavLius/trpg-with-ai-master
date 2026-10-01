@@ -95,9 +95,16 @@ def diagnose(config: DiagnoseConfig):
 
     print("[3] diagnose: start analys meta result")
     cpt_ratios = [meta.chars_per_token for meta in meta_list]
+
+    detail = []
+    for meta in meta_list:
+        target_sections = section_filter(meta.sections)
+        detail.append(
+            measure_meta_m(meta.title, target_sections, config.embed_test_max_seq))
     result = DiagnoseResult(
         max_sequence_length=config.embed_test_max_seq,
         count=len(meta_list),
+        detail=detail,
         average_cpt=statistics.fmean(cpt_ratios),
         min_cpt=min(cpt_ratios),
         max_cpt=max(cpt_ratios),
@@ -233,21 +240,27 @@ def analyze_heading_section_middle(text: str):
 
     return header_sections
 
-# def leaf_sections(sections: dict[str, list[SectionMeta]]) -> list[SectionMeta]:
-#     # 헤딩 1개 페이지는 내부 경계가 없어 M 정의 범위 밖 (§2-1 적용 범위)
-#     if sum(len(v) for v in sections.values()) < 2:
-#         return []
-#     return next((v for k in ("h6", "h5", "h4", "h3", "h2", "h1") if (v := sections[k])), [])
-#
-#
-# def measure_m(meta_list: list[DiagnoseMeta], budget: int) -> dict[str, float]:
-#     pool = [s for meta in meta_list if meta.sections for s in leaf_sections(meta.sections)]
-#     chars = [s.chars for s in pool]
-#     return {
-#         "n": len(pool),
-#         "m": statistics.median(chars),
-#         "m_nonspace": statistics.median(s.chars_nonspace for s in pool),
-#         "min": min(chars),
-#         "max": max(chars),
-#         "over_budget_ratio": sum(c > budget for c in chars) / len(chars),
-#     }
+
+def section_filter(sections: dict[str, list[SectionMeta]]):
+    target_sections: list[SectionMeta] = []
+    for i, s in enumerate(sections.values()):
+        if len(s) > 0:
+            for m in s:
+                if m.chars_nonspace > 0:
+                    target_sections.append(m)
+
+    return target_sections
+
+
+def measure_meta_m(title: str, sections: list[SectionMeta], budget: int) -> dict[
+    str, float]:
+    chars = [s.chars for s in sections]
+    return {
+        "title": title,
+        "n": len(sections),
+        "m": statistics.median(chars),
+        "m_nonspace": statistics.median(s.chars_nonspace for s in sections),
+        "min": min(chars),
+        "max": max(chars),
+        "over_budget_ratio": sum(c > budget for c in chars) / len(chars),
+    }
