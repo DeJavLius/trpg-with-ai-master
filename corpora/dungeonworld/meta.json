@@ -12,24 +12,26 @@
     ],
     "tokens": 13460,
     "chars_per_token": 1.924888558692422,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뉩": 1,
       "닢": 2,
       "뭅": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "플레이 하는 법",
           "chars": 25898,
           "chars_nonspace": 19392
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -45,20 +47,22 @@
     ],
     "tokens": 1196,
     "chars_per_token": 2.576923076923077,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "감사의 말씀(영문판)",
           "chars": 3068,
           "chars_nonspace": 2560
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -74,18 +78,20 @@
     ],
     "tokens": 6468,
     "chars_per_token": 1.880643166357452,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뉩": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "국면",
           "chars": 512,
           "chars_nonspace": 392
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "위험요소",
           "chars": 374,
@@ -142,10 +148,10 @@
           "chars_nonspace": 742
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -161,20 +167,22 @@
     ],
     "tokens": 6560,
     "chars_per_token": 1.841310975609756,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뭅": 1,
       "삯": 1,
       "섐": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "세계",
           "chars": 563,
           "chars_nonspace": 429
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "세계 만들기",
           "chars": 714,
@@ -221,10 +229,10 @@
           "chars_nonspace": 1684
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -240,18 +248,20 @@
     ],
     "tokens": 7784,
     "chars_per_token": 2.0079650565262077,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뭅": 2
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "천변만화",
           "chars": 334,
           "chars_nonspace": 256
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "액션 만들기",
           "chars": 275,
@@ -318,10 +328,10 @@
           "chars_nonspace": 604
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -337,18 +347,20 @@
     ],
     "tokens": 2277,
     "chars_per_token": 1.9929732103645148,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "씐": 2
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "캐릭터 만들기",
           "chars": 361,
           "chars_nonspace": 272
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "1. 직업을 고른다",
           "chars": 297,
@@ -415,10 +427,10 @@
           "chars_nonspace": 230
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -434,23 +446,25 @@
     ],
     "tokens": 2455,
     "chars_per_token": 1.7433808553971486,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "곘": 1,
       "쏩": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "플레이의 예",
           "chars": 4271,
           "chars_nonspace": 3227
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -466,22 +480,24 @@
     ],
     "tokens": 3498,
     "chars_per_token": 1.9534019439679817,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "욀": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "다름 시스템에서의 변환",
           "chars": 6818,
           "chars_nonspace": 5142
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -497,22 +513,24 @@
     ],
     "tokens": 3658,
     "chars_per_token": 1.8717878622197923,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "멉": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "서문",
           "chars": 6842,
           "chars_nonspace": 5172
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -528,16 +546,18 @@
     ],
     "tokens": 7959,
     "chars_per_token": 1.9733634878753612,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "마스터",
           "chars": 381,
           "chars_nonspace": 293
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "던전월드에서의 마스터링",
           "chars": 345,
@@ -604,10 +624,10 @@
           "chars_nonspace": 847
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -623,18 +643,20 @@
     ],
     "tokens": 5979,
     "chars_per_token": 1.8330824552600768,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "닢": 12
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "괴물",
           "chars": 98,
           "chars_nonspace": 77
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "괴물의 사용",
           "chars": 1255,
@@ -676,10 +698,10 @@
           "chars_nonspace": 2685
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -695,18 +717,20 @@
     ],
     "tokens": 3287,
     "chars_per_token": 2.0279890477639184,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "닢": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "첫 세션",
           "chars": 353,
           "chars_nonspace": 271
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "사전 준비",
           "chars": 823,
@@ -723,10 +747,10 @@
           "chars_nonspace": 2561
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -742,20 +766,22 @@
     ],
     "tokens": 1828,
     "chars_per_token": 2.0464989059080962,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "가르치기",
           "chars": 3734,
           "chars_nonspace": 2833
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -771,6 +797,7 @@
     ],
     "tokens": 10438,
     "chars_per_token": 1.8547614485533628,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "벱": 1,
       "쏩": 2,
@@ -778,7 +805,8 @@
       "닢": 2
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "액션",
           "chars": 0,
@@ -795,7 +823,7 @@
           "chars_nonspace": 0
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "접근전",
           "chars": 1766,
@@ -902,10 +930,10 @@
           "chars_nonspace": 216
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -921,9 +949,11 @@
     ],
     "tokens": 487,
     "chars_per_token": 1.995893223819302,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "던전 월드",
           "chars": 0,
@@ -945,11 +975,11 @@
           "chars_nonspace": 715
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -965,20 +995,22 @@
     ],
     "tokens": 2186,
     "chars_per_token": 1.7662397072278133,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "인스턴트 NPC",
           "chars": 3850,
           "chars_nonspace": 2799
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -994,6 +1026,7 @@
     ],
     "tokens": 8307,
     "chars_per_token": 2.4773082942097027,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "닢": 90,
       "뺍": 1,
@@ -1001,14 +1034,15 @@
       "똬": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "장비",
           "chars": 455,
           "chars_nonspace": 343
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "일반 장비 태그",
           "chars": 761,
@@ -1095,10 +1129,10 @@
           "chars_nonspace": 7114
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1114,9 +1148,11 @@
     ],
     "tokens": 600,
     "chars_per_token": 1.78,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "국면의 예: 백색 관문이 열리는 날",
           "chars": 0,
@@ -1133,11 +1169,11 @@
           "chars_nonspace": 472
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1153,20 +1189,22 @@
     ],
     "tokens": 2777,
     "chars_per_token": 1.8314728123874684,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "드루이드",
           "chars": 5079,
           "chars_nonspace": 3751
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1182,22 +1220,24 @@
     ],
     "tokens": 2256,
     "chars_per_token": 1.8018617021276595,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "닢": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "전사",
           "chars": 4060,
           "chars_nonspace": 2975
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1213,20 +1253,22 @@
     ],
     "tokens": 2384,
     "chars_per_token": 1.7986577181208054,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "성기사",
           "chars": 4282,
           "chars_nonspace": 3171
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1242,22 +1284,24 @@
     ],
     "tokens": 2748,
     "chars_per_token": 1.8904657933042213,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "씐": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "마법사",
           "chars": 5189,
           "chars_nonspace": 3833
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1273,23 +1317,25 @@
     ],
     "tokens": 2485,
     "chars_per_token": 1.8728370221327968,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "섕": 1,
       "닢": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "도적",
           "chars": 4649,
           "chars_nonspace": 3417
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1305,22 +1351,24 @@
     ],
     "tokens": 2665,
     "chars_per_token": 1.8161350844277673,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "멉": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "사제",
           "chars": 4835,
           "chars_nonspace": 3562
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1336,23 +1384,25 @@
     ],
     "tokens": 2497,
     "chars_per_token": 1.815378454144974,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "닢": 1,
       "멉": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "음유시인",
           "chars": 4526,
           "chars_nonspace": 3323
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1368,20 +1418,22 @@
     ],
     "tokens": 2509,
     "chars_per_token": 1.8397768035073734,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "사냥꾼",
           "chars": 4610,
           "chars_nonspace": 3394
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1397,22 +1449,24 @@
     ],
     "tokens": 3161,
     "chars_per_token": 1.7880417589370452,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뭅": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "깊고도 깊은 곳",
           "chars": 5641,
           "chars_nonspace": 4014
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1428,20 +1482,22 @@
     ],
     "tokens": 3219,
     "chars_per_token": 1.8518173345759552,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "이계의 존재",
           "chars": 5952,
           "chars_nonspace": 4202
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1457,22 +1513,24 @@
     ],
     "tokens": 1105,
     "chars_per_token": 2.454298642533937,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "겡": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "괴물 이름 한영 대조표",
           "chars": 2697,
           "chars_nonspace": 1985
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1488,20 +1546,22 @@
     ],
     "tokens": 3637,
     "chars_per_token": 1.8196315644762167,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "캄캄한 동굴",
           "chars": 6609,
           "chars_nonspace": 4457
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1517,23 +1577,25 @@
     ],
     "tokens": 4915,
     "chars_per_token": 1.8282807731434385,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "겡": 6,
       "꾄": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "부글거리는 늪지",
           "chars": 8975,
           "chars_nonspace": 6274
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1549,23 +1611,25 @@
     ],
     "tokens": 4854,
     "chars_per_token": 1.7880098887515452,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "뭍": 1,
       "떱": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "이민족의 무리",
           "chars": 8669,
           "chars_nonspace": 6263
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1581,23 +1645,25 @@
     ],
     "tokens": 3070,
     "chars_per_token": 1.8745928338762214,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "퇘": 1,
       "닢": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "사람들",
           "chars": 5749,
           "chars_nonspace": 4009
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1613,20 +1679,22 @@
     ],
     "tokens": 4216,
     "chars_per_token": 1.8372865275142316,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "언데드 군단",
           "chars": 7737,
           "chars_nonspace": 5407
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1642,23 +1710,25 @@
     ],
     "tokens": 4546,
     "chars_per_token": 1.768587769467664,
+    "preamble_nonspace": 0,
     "unk_tokens": {
       "옭": 1,
       "샙": 1
     },
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "어두운 숲속",
           "chars": 8031,
           "chars_nonspace": 5717
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1674,20 +1744,22 @@
     ],
     "tokens": 3303,
     "chars_per_token": 1.8619436875567665,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "뒤틀린 실험체",
           "chars": 6140,
           "chars_nonspace": 4220
         }
       ],
-      "h2": [],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1703,26 +1775,28 @@
     ],
     "tokens": 2600,
     "chars_per_token": 2.2207692307692306,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "사제 주문",
           "chars": 0,
           "chars_nonspace": 0
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "암송주문",
           "chars": 5758,
           "chars_nonspace": 3512
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   },
   {
@@ -1738,26 +1812,28 @@
     ],
     "tokens": 2689,
     "chars_per_token": 2.4812197843064334,
+    "preamble_nonspace": 0,
     "unk_tokens": null,
     "sections": {
-      "h1": [
+      "0": [],
+      "1": [
         {
           "section_title": "마법사",
           "chars": 0,
           "chars_nonspace": 0
         }
       ],
-      "h2": [
+      "2": [
         {
           "section_title": "간편주문",
           "chars": 6658,
           "chars_nonspace": 3863
         }
       ],
-      "h3": [],
-      "h4": [],
-      "h5": [],
-      "h6": []
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
     }
   }
 ]

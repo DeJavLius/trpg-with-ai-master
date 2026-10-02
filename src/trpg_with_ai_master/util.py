@@ -1,10 +1,9 @@
 import json
+import re
 from dataclasses import fields
 from pathlib import Path
 
 from trpg_with_ai_master.config import Config
-
-HEAD_SECTIONS: str = "###### "
 
 
 def save_file(file_name: str, path: Path, content: str):
@@ -13,16 +12,28 @@ def save_file(file_name: str, path: Path, content: str):
     path.write_text(content, encoding="utf-8")
 
 
+def header_re(s: int = 1, e: int = 6, flags: int | re.RegexFlag = 0):
+    if s < 1 or e > 6:
+        raise RuntimeError("wrong header length.. 1 ~ 6 can be possible")
+    elif s > e:
+        raise RuntimeError("start position is greater than end position")
+
+    return re.compile(rf"^(#{{{s},{e}}}) (.*)$", flags)
+
+
 def header_counting(content: str) -> tuple[int, list[int]]:
-    total = len(content)
+    head_count: list[int] = [0] * 6
+    for m in header_re(flags=re.M).finditer(content):
+        head_count[len(m.group(1)) - 1] += 1
 
-    head_count: list[int] = [0 for _ in range(6)]
-    for h in range(6):
-        header = HEAD_SECTIONS[h:]
-        head_count[5 - h] = content.count(header)
-        content = content.replace(header, "")
+    return len(content), head_count
 
-    return total, head_count
+
+def find_header(lines: list[str]) -> list[
+    tuple[int, re.Match[str]]]:
+    header = header_re()
+    return [(i, m) for i, line in enumerate(lines) if
+            (m := header.match(line))]
 
 
 def serialize(values: list) -> str:

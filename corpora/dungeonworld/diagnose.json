@@ -3,24 +3,6 @@
   "count": 38,
   "detail": [
     {
-      "title": "플레이 하는 법",
-      "n": 1,
-      "m": 25898,
-      "m_nonspace": 19392,
-      "min": 25898,
-      "max": 25898,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "감사의 말씀(영문판)",
-      "n": 1,
-      "m": 3068,
-      "m_nonspace": 2560,
-      "min": 3068,
-      "max": 3068,
-      "over_budget_ratio": 1.0
-    },
-    {
       "title": "국면",
       "n": 12,
       "m": 886.5,
@@ -54,34 +36,7 @@
       "m_nonspace": 204.5,
       "min": 31,
       "max": 819,
-      "over_budget_ratio": 0.8571428571428571
-    },
-    {
-      "title": "플레이의 예",
-      "n": 1,
-      "m": 4271,
-      "m_nonspace": 3227,
-      "min": 4271,
-      "max": 4271,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "다른 시스템에서의 변환",
-      "n": 1,
-      "m": 6818,
-      "m_nonspace": 5142,
-      "min": 6818,
-      "max": 6818,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "서문",
-      "n": 1,
-      "m": 6842,
-      "m_nonspace": 5172,
-      "min": 6842,
-      "max": 6842,
-      "over_budget_ratio": 1.0
+      "over_budget_ratio": 0.6428571428571429
     },
     {
       "title": "마스터",
@@ -111,22 +66,13 @@
       "over_budget_ratio": 1.0
     },
     {
-      "title": "가르치기",
-      "n": 1,
-      "m": 3734,
-      "m_nonspace": 2833,
-      "min": 3734,
-      "max": 3734,
-      "over_budget_ratio": 1.0
-    },
-    {
       "title": "액션",
       "n": 21,
       "m": 444,
       "m_nonspace": 335,
       "min": 131,
       "max": 2055,
-      "over_budget_ratio": 1.0
+      "over_budget_ratio": 0.8571428571428571
     },
     {
       "title": "던전월드 한국어 공개판 임시 웹페이지",
@@ -138,22 +84,13 @@
       "over_budget_ratio": 1.0
     },
     {
-      "title": "인스턴트 NPC",
-      "n": 1,
-      "m": 3850,
-      "m_nonspace": 2799,
-      "min": 3850,
-      "max": 3850,
-      "over_budget_ratio": 1.0
-    },
-    {
       "title": "장비",
       "n": 18,
       "m": 472.0,
       "m_nonspace": 182.0,
       "min": 66,
       "max": 11167,
-      "over_budget_ratio": 0.9444444444444444
+      "over_budget_ratio": 0.8333333333333334
     },
     {
       "title": "국면의 예: 백색 관문이 열리는 날",
@@ -162,168 +99,6 @@
       "m_nonspace": 381.5,
       "min": 404,
       "max": 622,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "드루이드",
-      "n": 1,
-      "m": 5079,
-      "m_nonspace": 3751,
-      "min": 5079,
-      "max": 5079,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "전사",
-      "n": 1,
-      "m": 4060,
-      "m_nonspace": 2975,
-      "min": 4060,
-      "max": 4060,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "성기사",
-      "n": 1,
-      "m": 4282,
-      "m_nonspace": 3171,
-      "min": 4282,
-      "max": 4282,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "마법사",
-      "n": 1,
-      "m": 5189,
-      "m_nonspace": 3833,
-      "min": 5189,
-      "max": 5189,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "도적",
-      "n": 1,
-      "m": 4649,
-      "m_nonspace": 3417,
-      "min": 4649,
-      "max": 4649,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "사제",
-      "n": 1,
-      "m": 4835,
-      "m_nonspace": 3562,
-      "min": 4835,
-      "max": 4835,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "음유시인",
-      "n": 1,
-      "m": 4526,
-      "m_nonspace": 3323,
-      "min": 4526,
-      "max": 4526,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "사냥꾼",
-      "n": 1,
-      "m": 4610,
-      "m_nonspace": 3394,
-      "min": 4610,
-      "max": 4610,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "깊고도 깊은 곳",
-      "n": 1,
-      "m": 5641,
-      "m_nonspace": 4014,
-      "min": 5641,
-      "max": 5641,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "이계의 존재",
-      "n": 1,
-      "m": 5952,
-      "m_nonspace": 4202,
-      "min": 5952,
-      "max": 5952,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "괴물 이름 한영 대조표",
-      "n": 1,
-      "m": 2697,
-      "m_nonspace": 1985,
-      "min": 2697,
-      "max": 2697,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "캄캄한 동굴",
-      "n": 1,
-      "m": 6609,
-      "m_nonspace": 4457,
-      "min": 6609,
-      "max": 6609,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "부글거리는 늪지",
-      "n": 1,
-      "m": 8975,
-      "m_nonspace": 6274,
-      "min": 8975,
-      "max": 8975,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "이민족의 무리",
-      "n": 1,
-      "m": 8669,
-      "m_nonspace": 6263,
-      "min": 8669,
-      "max": 8669,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "사람들",
-      "n": 1,
-      "m": 5749,
-      "m_nonspace": 4009,
-      "min": 5749,
-      "max": 5749,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "언데드 군단",
-      "n": 1,
-      "m": 7737,
-      "m_nonspace": 5407,
-      "min": 7737,
-      "max": 7737,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "어두운 숲속",
-      "n": 1,
-      "m": 8031,
-      "m_nonspace": 5717,
-      "min": 8031,
-      "max": 8031,
-      "over_budget_ratio": 1.0
-    },
-    {
-      "title": "뒤틀린 실험체",
-      "n": 1,
-      "m": 6140,
-      "m_nonspace": 4220,
-      "min": 6140,
-      "max": 6140,
       "over_budget_ratio": 1.0
     },
     {
@@ -345,6 +120,7 @@
       "over_budget_ratio": 1.0
     }
   ],
+  "total_m": 622,
   "average_cpt": 1.9418283279667825,
   "max_cpt": 2.576923076923077,
   "min_cpt": 1.7433808553971486,

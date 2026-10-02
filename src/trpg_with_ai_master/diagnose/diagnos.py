@@ -9,7 +9,9 @@ from transformers import AutoTokenizer, SentencePieceBackend, TokenizersBackend
 from trpg_with_ai_master.crawl.convert import extract
 from trpg_with_ai_master.crawl.index_mapped import PageEntry
 from trpg_with_ai_master.diagnose.config import DiagnoseConfig
-from trpg_with_ai_master.util import header_counting, load_json, save_file
+from trpg_with_ai_master.util import header_counting, find_header, \
+    load_json, \
+    save_file
 
 
 @dataclass(kw_only=True)
@@ -26,16 +28,18 @@ class DiagnoseMeta:
     headings: list[int]
     tokens: int = 0
     chars_per_token: float = 0.0
+    preamble_nonspace: int = 0
     unk_tokens: dict[str, int] | None = None
-    sections: dict[str, list[SectionMeta]] | None = None
+    sections: dict[int, list[
+        SectionMeta]] | None = None  # meta의 헤더 측정 값이 숫자이나 저장된 값은 str 이므로 변환 함수 필요 - 나중에 사용 시 구
 
 
 @dataclass(kw_only=True)
 class ResultDetail:
     title: str
     n: int = 0
-    m: int = 0
-    m_nonspace: int = 0
+    m: float = 0.0
+    m_nonspace: float = 0.0
     min: int = 0
     max: int = 0
     over_budget_ratio: float = 0.0
@@ -46,6 +50,7 @@ class DiagnoseResult:
     max_sequence_length: int = 0
     count: int = 0
     detail: list[ResultDetail] | None = None
+    total_m: float = 0.0
     average_cpt: float = 0.0
     max_cpt: float = 0.0
     min_cpt: float = 0.0
@@ -60,7 +65,7 @@ class DiagnoseResult:
             + f"페이지별 자/토큰(page size / token size) 비율 > 평균: {self.average_cpt} | 최소: {self.min_cpt} | 최대: {self.max_cpt}\n"
             + f"상위/하위 10% 비율 > 상위 10%: {self.upper_ten_percent_cpt} | 하위 10%: {self.lower_ten_percent_cpt}\n"
             + f"모델 사이즈({self.max_sequence_length})에 따른 안전 토큰: {self.safe_chars}\n"
-            + f"페이지별 중앙값: \n"
+            + f"전체 섹션 중앙값: {self.total_m}\n"
             + f"토큰화가 불리한 페이지 순위: \n{"\n".join([f"{i + 1}. {v}" for i, v in enumerate(self.cpt_ranking_by_worst)])}"
         )
 
@@ -95,22 +100,24 @@ def diagnose(config: DiagnoseConfig):
 
     print("[3] diagnose: start analys meta result")
     cpt_ratios = [meta.chars_per_token for meta in meta_list]
+    max_chars = config.embed_test_max_seq * min(cpt_ratios)
 
-    detail = []
-    for meta in meta_list:
-        target_sections = section_filter(meta.sections)
-        detail.append(
-            measure_meta_m(meta.title, target_sections, config.embed_test_max_seq))
+    detail, total_page = section_analyze(meta_list, max_chars)
+
+    total_m = measure_meta_m(config.meta_file.stem, total_page,
+                             round(max_chars)).m if total_page else 0.0
+    detail = None if len(detail) == 0 else detail
     result = DiagnoseResult(
         max_sequence_length=config.embed_test_max_seq,
         count=len(meta_list),
         detail=detail,
+        total_m=total_m,
         average_cpt=statistics.fmean(cpt_ratios),
         min_cpt=min(cpt_ratios),
         max_cpt=max(cpt_ratios),
         lower_ten_percent_cpt=statistics.quantiles(cpt_ratios, n=10)[0],
         upper_ten_percent_cpt=statistics.quantiles(cpt_ratios, n=10)[-1],
-        safe_chars=config.embed_test_max_seq * min(cpt_ratios),
+        safe_chars=max_chars,
         cpt_ranking_by_worst=[
             ms.title for ms in sorted(meta_list, key=lambda m: m.chars_per_token)
         ],
@@ -187,7 +194,8 @@ def meta_analyze(
         markdown_path = Path(config.base_path + index_page.md)
         markdown_file = markdown_path.read_text(encoding="utf-8")
 
-        meta.sections = analyze_heading_section_middle(markdown_file)
+        meta.sections, meta.preamble_nonspace = analyze_heading_section_middle(
+            markdown_file)
 
         unk_text_dict: dict[str, int] = {}
         encode_token = tokenizer(
@@ -222,45 +230,63 @@ def meta_analyze(
     return meta_list
 
 
-HEADING_RE = re.compile(r"^(#{1,6}) (.*)$")
+def section_analyze(meta_list: list[DiagnoseMeta], max_chars: float) -> tuple[
+    list[ResultDetail], list[SectionMeta]]:
+    detail: list[ResultDetail] = []
+    total_page: list[SectionMeta] = []
+
+    for meta in meta_list:
+        if meta.sections:
+            target_sections: list[SectionMeta] = section_filter(meta.sections)
+            if len(target_sections) > 0:
+                detail.append(
+                    measure_meta_m(meta.title, target_sections, round(max_chars)))
+                total_page.extend(target_sections)
+
+    return detail, total_page
+
+
 WHITESPACE_RE = re.compile(r"\s")
 
 
-def analyze_heading_section_middle(text: str):
-    header_sections: dict[str, list[SectionMeta]] = {f"h{n}": [] for n in range(1, 7)}
+def analyze_heading_section_middle(text: str) -> tuple[
+    dict[int, list[SectionMeta]], int]:
+    header_sections: dict[int, list[SectionMeta]] = {n: [] for n in range(0, 7)}
     lines = text.split("\n")
-    heads = [(li, m) for li, line in enumerate(lines) if (m := HEADING_RE.match(line))]
+    heads = find_header(lines)
+    preamble = "\n".join(lines[:heads[0][0]]) if heads else text
+    preamble_nonspace = len(WHITESPACE_RE.sub("", preamble))
+
+    if preamble_nonspace > 0:
+        header_sections[0].append(
+            SectionMeta(section_title="", chars=len(preamble),
+                        chars_nonspace=preamble_nonspace))
 
     for i, (hi, match) in enumerate(heads):
         end = heads[i + 1][0] if i + 1 < len(heads) else len(lines)
         body = "\n".join(lines[hi + 1:end])
-        header_sections[f"h{len(match.group(1))}"].append(
+        header_sections[len(match.group(1))].append(
             SectionMeta(section_title=match.group(2).strip(), chars=len(body),
                         chars_nonspace=len(WHITESPACE_RE.sub("", body))))
 
-    return header_sections
+    return header_sections, preamble_nonspace
 
 
-def section_filter(sections: dict[str, list[SectionMeta]]):
-    target_sections: list[SectionMeta] = []
-    for i, s in enumerate(sections.values()):
-        if len(s) > 0:
-            for m in s:
-                if m.chars_nonspace > 0:
-                    target_sections.append(m)
-
-    return target_sections
+def section_filter(sections: dict[int, list[SectionMeta]]) -> list[SectionMeta]:
+    if sum(len(v) for v in sections.values()) < 2:
+        return []
+    return [s for v in sections.values() for s in v if s.chars_nonspace > 0]
 
 
-def measure_meta_m(title: str, sections: list[SectionMeta], budget: int) -> dict[
-    str, float]:
+def measure_meta_m(title: str, sections: list[SectionMeta],
+                   budget: int) -> ResultDetail:
     chars = [s.chars for s in sections]
-    return {
-        "title": title,
-        "n": len(sections),
-        "m": statistics.median(chars),
-        "m_nonspace": statistics.median(s.chars_nonspace for s in sections),
-        "min": min(chars),
-        "max": max(chars),
-        "over_budget_ratio": sum(c > budget for c in chars) / len(chars),
-    }
+    return ResultDetail(
+        title=title,
+        n=len(sections),
+        m=statistics.median(chars),
+        m_nonspace=statistics.median(s.chars_nonspace for s in sections),
+        min=min(chars),
+        max=max(chars),
+        over_budget_ratio=sum(c > budget for c in chars) / len(chars),
+    )
