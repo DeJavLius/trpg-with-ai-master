@@ -1,7 +1,7 @@
 {
   "max_sequence_length": 128,
   "count": 38,
-  "detail": [
+  "pooled": [
     {
       "title": "국면",
       "n": 12,

@@ -49,7 +49,7 @@ class ResultDetail:
 class DiagnoseResult:
     max_sequence_length: int = 0
     count: int = 0
-    detail: list[ResultDetail] | None = None
+    pooled: list[ResultDetail] | None = None
     total_m: float = 0.0
     average_cpt: float = 0.0
     max_cpt: float = 0.0
@@ -102,15 +102,15 @@ def diagnose(config: DiagnoseConfig):
     cpt_ratios = [meta.chars_per_token for meta in meta_list]
     max_chars = config.embed_test_max_seq * min(cpt_ratios)
 
-    detail, total_page = section_analyze(meta_list, max_chars)
+    pooled, total_page = section_analyze(meta_list, max_chars)
 
     total_m = measure_meta_m(config.meta_file.stem, total_page,
                              round(max_chars)).m if total_page else 0.0
-    detail = None if len(detail) == 0 else detail
+    pooled = None if len(pooled) == 0 else pooled
     result = DiagnoseResult(
         max_sequence_length=config.embed_test_max_seq,
         count=len(meta_list),
-        detail=detail,
+        pooled=pooled,
         total_m=total_m,
         average_cpt=statistics.fmean(cpt_ratios),
         min_cpt=min(cpt_ratios),
@@ -232,18 +232,18 @@ def meta_analyze(
 
 def section_analyze(meta_list: list[DiagnoseMeta], max_chars: float) -> tuple[
     list[ResultDetail], list[SectionMeta]]:
-    detail: list[ResultDetail] = []
+    pooled: list[ResultDetail] = []
     total_page: list[SectionMeta] = []
 
     for meta in meta_list:
         if meta.sections:
             target_sections: list[SectionMeta] = section_filter(meta.sections)
             if len(target_sections) > 0:
-                detail.append(
+                pooled.append(
                     measure_meta_m(meta.title, target_sections, round(max_chars)))
                 total_page.extend(target_sections)
 
-    return detail, total_page
+    return pooled, total_page
 
 
 WHITESPACE_RE = re.compile(r"\s")
